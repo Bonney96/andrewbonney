@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Lab" description="Experimental bioinformatics tools and demos">
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-5xl px-6">
+      <!-- Back link -->
+      <div class="mb-4">
+        <a href="/" class="font-mono text-xs text-text-faint hover:text-text-muted transition-colors">
+          &larr; Home
+        </a>
+      </div>
+
+      <!-- Page header -->
+      <div class="mb-12 border-b border-hairline pb-4">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="font-mono text-xs text-text-faint uppercase tracking-wider">Lab</span>
+          <span class="font-mono text-[10px] text-amber px-1.5 py-0.5 border border-amber/20 rounded-sm">experimental</span>
+        </div>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold">The Lab</h1>
+        <p class="text-text-muted mt-3 max-w-2xl">
+          Interactive bioinformatics tools and computational demos. These experiments run on a headless architecture — static frontend calling a FastAPI backend for heavy processing.
+        </p>
+      </div>
+
+      <!-- EpiBench Lite -->
+      <div class="border border-hairline rounded-sm overflow-hidden max-w-3xl">
+        <!-- Title bar -->
+        <div class="bg-elevated px-5 py-3 border-b border-hairline flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-terracotta/60"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber/60"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-moss/60"></span>
+            </div>
+            <span class="font-mono text-sm text-text">EpiBench Lite</span>
+          </div>
+          <span class="font-mono text-[10px] text-indigo">v0.1.0-alpha</span>
+        </div>
+
+        <!-- Content -->
+        <div class="bg-surface/50 p-6 sm:p-8">
+          <h2 class="font-serif text-2xl font-semibold mb-4">Epigenetic Analysis Demo</h2>
+          <p class="text-text-muted leading-relaxed mb-6">
+            Upload CSV or FASTA files for real-time methylation prediction using Python, pandas, and scikit-learn. Results include interactive heatmaps and downloadable reports.
+          </p>
+
+          <!-- Architecture diagram (text-based) -->
+          <div class="bg-base rounded-sm p-5 mb-6 border border-hairline">
+            <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider block mb-3">Architecture</span>
+            <div class="font-mono text-xs text-text-muted space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="text-moss">Browser</span>
+                <span class="text-text-faint">&rarr;</span>
+                <span class="text-text-faint">POST /predict</span>
+                <span class="text-text-faint">&rarr;</span>
+                <span class="text-indigo">api.andrewbonney.cloud</span>
+              </div>
+              <div class="flex items-center gap-2 pl-[4.5rem]">
+                <span class="text-text-faint">&darr;</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-indigo">FastAPI</span>
+                <span class="text-text-faint">&rarr;</span>
+                <span class="text-amber">pandas + sklearn</span>
+                <span class="text-text-faint">&rarr;</span>
+                <span class="text-moss">JSON Response</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="flex items-center gap-3 py-3 border-t border-hairline">
+            <span class="flex items-center gap-1.5 font-mono text-xs text-amber">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber animate-pulse"></span>
+              Awaiting backend connection
+            </span>
+            <span class="font-mono text-[10px] text-text-faint ml-auto">
+              Requires: VPS + FastAPI deployment
+            </span>
+          </div>
+        </div>
+
+        <!-- Planned features -->
+        <div class="bg-elevated px-5 py-4 border-t border-hairline">
+          <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider block mb-2">Planned Features</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div class="font-mono text-xs text-text-muted flex items-center gap-2">
+              <span class="text-text-faint">&#9744;</span> File upload (CSV/FASTA)
+            </div>
+            <div class="font-mono text-xs text-text-muted flex items-center gap-2">
+              <span class="text-text-faint">&#9744;</span> Real-time processing status
+            </div>
+            <div class="font-mono text-xs text-text-muted flex items-center gap-2">
+              <span class="text-text-faint">&#9744;</span> Interactive heatmaps
+            </div>
+            <div class="font-mono text-xs text-text-muted flex items-center gap-2">
+              <span class="text-text-faint">&#9744;</span> Downloadable reports
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

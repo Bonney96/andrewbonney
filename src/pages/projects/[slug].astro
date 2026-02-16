@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const statusColors = {
+  'live': 'bg-moss/20 text-moss',
+  'beta': 'bg-amber/20 text-amber',
+  'coming-soon': 'bg-indigo/20 text-indigo',
+} as const;
+
+const statusLabels = {
+  'live': 'Live',
+  'beta': 'Beta',
+  'coming-soon': 'Coming Soon',
+} as const;
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <article class="py-20 sm:py-28">
+    <div class="mx-auto max-w-3xl px-6">
+      <!-- Back link -->
+      <div class="mb-8">
+        <a href="/projects" class="font-mono text-xs text-text-faint hover:text-text-muted transition-colors">
+          &larr; All Projects
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class={`inline-flex items-center px-2 py-0.5 rounded-sm font-mono text-[10px] uppercase tracking-wider ${statusColors[project.data.status]}`}>
+            {statusLabels[project.data.status]}
+          </span>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold mb-4" transition:name={`project-title-${project.id}`}>
+          {project.data.title}
+        </h1>
+
+        <p class="text-text-muted text-lg leading-relaxed mb-6">
+          {project.data.description}
+        </p>
+
+        <!-- Metadata bar -->
+        <div class="flex flex-wrap items-center gap-4 py-3 border-y border-hairline">
+          {project.data.status !== 'coming-soon' && (
+            <a
+              href={project.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-xs text-moss hover:text-text transition-colors"
+            >
+              Visit &nearr;
+            </a>
+          )}
+          {project.data.repo && (
+            <a
+              href={project.data.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-xs text-text-muted hover:text-text transition-colors"
+            >
+              Source &nearr;
+            </a>
+          )}
+          <div class="flex flex-wrap gap-2 ml-auto">
+            {project.data.tags.map((tag: string) => (
+              <span class="font-mono text-[10px] text-text-faint px-1.5 py-0.5 border border-hairline rounded-sm">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-invert prose-sm max-w-none
+        prose-headings:font-serif prose-headings:font-semibold
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-p:text-text-muted prose-p:leading-relaxed
+        prose-a:text-indigo prose-a:no-underline hover:prose-a:text-text
+        prose-strong:text-text prose-strong:font-semibold
+        prose-code:font-mono prose-code:text-moss prose-code:text-sm
+        prose-li:text-text-muted
+        prose-ul:list-disc prose-ul:pl-4
+      ">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

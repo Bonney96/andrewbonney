@@ -1,0 +1,70 @@
+---
+---
+
+<section id="lab" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl px-6">
+    <!-- Section header -->
+    <div class="mb-12 flex items-end justify-between border-b border-hairline pb-4">
+      <div>
+        <span class="font-mono text-xs text-text-faint uppercase tracking-wider block mb-2">03</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold">The Lab</h2>
+      </div>
+      <span class="font-mono text-xs text-amber">
+        [experimental]
+      </span>
+    </div>
+
+    <!-- Terminal-style card -->
+    <div class="max-w-2xl border border-hairline rounded-sm overflow-hidden">
+      <!-- Terminal title bar -->
+      <div class="bg-elevated px-4 py-2.5 border-b border-hairline flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="flex gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-terracotta/60"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber/60"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-moss/60"></span>
+          </div>
+          <span class="font-mono text-xs text-text-faint ml-2">epibench-lite</span>
+        </div>
+        <span class="font-mono text-[10px] text-indigo">v0.1.0-alpha</span>
+      </div>
+
+      <!-- Terminal body -->
+      <div class="bg-surface/50 px-5 py-6">
+        <div class="font-mono text-sm space-y-3">
+          <div class="flex items-start gap-2">
+            <span class="text-moss select-none">$</span>
+            <span class="text-text">epibench init --mode=lite</span>
+          </div>
+          <div class="text-text-muted text-xs space-y-1.5 pl-4">
+            <p><span class="text-indigo">info</span> Loading methylation prediction model...</p>
+            <p><span class="text-amber">warn</span> Backend API not yet connected</p>
+            <p><span class="text-text-faint">---</span></p>
+            <p>EpiBench Lite is a browser-based demo for epigenetic analysis.</p>
+            <p>Upload CSV or FASTA files, run methylation predictions via</p>
+            <p>the FastAPI backend, and visualize results in real-time.</p>
+          </div>
+          <div class="flex items-center gap-2 pt-2">
+            <span class="text-moss select-none">$</span>
+            <span class="text-text-muted animate-pulse">_</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terminal footer -->
+      <div class="bg-elevated px-4 py-2 border-t border-hairline">
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-[10px] text-text-faint">
+            Python &middot; pandas &middot; scikit-learn &middot; FastAPI
+          </span>
+          <a
+            href="/lab"
+            class="font-mono text-[10px] text-indigo hover:text-text transition-colors"
+          >
+            Open Lab &nearr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

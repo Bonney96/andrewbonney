@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Sequence Not Found">
+  <section class="py-32 sm:py-40">
+    <div class="mx-auto max-w-5xl px-6 text-center">
+      <!-- Error code -->
+      <div class="font-mono text-8xl sm:text-9xl font-bold text-text-faint/30 mb-6">
+        404
+      </div>
+
+      <h1 class="font-serif text-3xl sm:text-4xl font-semibold mb-4">
+        Sequence Not Found
+      </h1>
+
+      <p class="font-mono text-sm text-text-muted max-w-md mx-auto mb-8">
+        The requested nucleotide sequence could not be located in the reference genome. This region may have been deleted or rearranged.
+      </p>
+
+      <div class="inline-block bg-surface/50 border border-hairline rounded-sm px-5 py-3 mb-10">
+        <div class="font-mono text-xs text-text-faint space-y-1 text-left">
+          <div><span class="text-terracotta">ERROR</span> FileNotFoundError</div>
+          <div><span class="text-text-muted">path:</span> {Astro.url.pathname}</div>
+          <div><span class="text-text-muted">status:</span> 404</div>
+        </div>
+      </div>
+
+      <div>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-6 py-3 border border-hairline-strong rounded font-mono text-sm text-text hover:bg-surface hover:border-moss/30 transition-all"
+        >
+          &larr; Return to Home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

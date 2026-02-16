@@ -1,0 +1,65 @@
+---
+import { SITE, NAV_LINKS } from '../lib/constants';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-base/80 backdrop-blur-md border-b border-hairline">
+  <nav class="mx-auto max-w-5xl px-6 h-14 flex items-center justify-between">
+    <a href="/" class="font-serif text-lg text-text hover:text-moss transition-colors">
+      {SITE.title}
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden sm:flex items-center gap-8">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'font-mono text-xs tracking-wider uppercase transition-colors',
+            currentPath === link.href || (link.href.startsWith('/#') && currentPath === '/')
+              ? 'text-text'
+              : 'text-text-muted hover:text-text',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="sm:hidden font-mono text-xs text-text-muted hover:text-text transition-colors"
+      aria-label="Toggle menu"
+    >
+      menu
+    </button>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-hairline bg-base/95 backdrop-blur-md">
+    <div class="px-6 py-4 flex flex-col gap-4">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class="font-mono text-sm text-text-muted hover:text-text transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      btn.textContent = open ? 'menu' : 'close';
+    });
+  }
+</script>

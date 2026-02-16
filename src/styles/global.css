@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* Fonts */
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/600.css";
+@import "@fontsource/lora/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+/* ============================================
+   Cognitive Brutalism — "The Lab in the Library"
+   ============================================ */
+
+@theme {
+  /* Surface hierarchy */
+  --color-base: #1a1a1a;
+  --color-surface: #242424;
+  --color-elevated: #2e2e2e;
+  --color-overlay: #383838;
+
+  /* Earth-tone accents (desaturated syntax colors) */
+  --color-moss: #7a9a6d;
+  --color-indigo: #6e7bb8;
+  --color-terracotta: #c07050;
+  --color-amber: #b89a5a;
+
+  /* Text */
+  --color-text: #e8e0d8;
+  --color-text-muted: #8a8278;
+  --color-text-faint: #5a5550;
+
+  /* Borders */
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-hairline-strong: rgba(255, 255, 255, 0.15);
+
+  /* Typography */
+  --font-serif: "Lora", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ============================================
+   Base styles
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-base);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise grain overlay — concrete/paper texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/noise.svg");
+  background-repeat: repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================
+   Typography defaults
+   ============================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   Utility layer
+   ============================================ */
+
+@utility border-hairline {
+  border-width: 0.5px;
+  border-color: var(--color-hairline);
+}
+
+@utility border-hairline-strong {
+  border-width: 0.5px;
+  border-color: var(--color-hairline-strong);
+}
+
+@utility font-serif {
+  font-family: var(--font-serif);
+}
+
+@utility font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   Selection & scrollbar
+   ============================================ */
+
+::selection {
+  background-color: rgba(110, 123, 184, 0.3);
+  color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-faint);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

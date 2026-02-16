@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Projects" description="Active deployments and tools by Andrew Bonney">
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-5xl px-6">
+      <!-- Page header -->
+      <div class="mb-4">
+        <a href="/" class="font-mono text-xs text-text-faint hover:text-text-muted transition-colors">
+          &larr; Home
+        </a>
+      </div>
+
+      <div class="mb-12 border-b border-hairline pb-4">
+        <span class="font-mono text-xs text-text-faint uppercase tracking-wider block mb-2">Index</span>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold">Projects</h1>
+        <p class="text-text-muted mt-3">Active deployments, tools, and research platforms.</p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+  
+            tags={project.data.tags}
+            status={project.data.status}
+            slug={project.id}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

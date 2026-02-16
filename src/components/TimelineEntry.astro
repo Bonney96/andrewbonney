@@ -1,0 +1,53 @@
+---
+import type { TimelineEntry } from '../data/timeline';
+
+interface Props {
+  entry: TimelineEntry;
+}
+
+const { entry } = Astro.props;
+
+const typeColors = {
+  education: 'border-indigo bg-indigo',
+  work: 'border-moss bg-moss',
+} as const;
+---
+
+<div class="relative pl-8 pb-12 last:pb-0 group">
+  <!-- Timeline line -->
+  <div class="absolute left-[7px] top-3 bottom-0 w-px bg-hairline group-last:hidden"></div>
+
+  <!-- Timeline dot -->
+  <div class={`absolute left-0 top-2 w-[15px] h-[15px] rounded-full border-2 ${typeColors[entry.type]}/20`}>
+    <div class={`absolute inset-[3px] rounded-full ${typeColors[entry.type]}`}></div>
+  </div>
+
+  <!-- Content -->
+  <div>
+    <!-- Date and type -->
+    <div class="flex items-center gap-3 mb-1.5">
+      <span class="font-serif text-sm text-text-muted">{entry.date}</span>
+      <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider">
+        {entry.type}
+      </span>
+    </div>
+
+    <!-- Title and org -->
+    <h3 class="font-serif text-lg font-semibold mb-0.5">{entry.title}</h3>
+    <p class="font-mono text-sm text-moss mb-3">{entry.organization}</p>
+
+    <!-- Description -->
+    <p class="text-text-muted text-sm leading-relaxed max-w-xl">{entry.description}</p>
+
+    <!-- Tags -->
+    {entry.tags && (
+      <div class="flex flex-wrap gap-2 mt-3">
+        {entry.tags.map((tag) => (
+          <span class="font-mono text-[10px] text-text-faint px-1.5 py-0.5 border border-hairline rounded-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</div>

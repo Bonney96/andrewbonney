@@ -1,0 +1,25 @@
+---
+import { SITE } from '../lib/constants';
+---
+
+<footer class="border-t border-hairline mt-32">
+  <div class="mx-auto max-w-5xl px-6 py-8">
+    <!-- Telemetry-style footer -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="font-mono text-xs text-text-faint flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span>&copy; {new Date().getFullYear()} {SITE.title}</span>
+        <span class="text-hairline-strong">/</span>
+        <span>MIT License</span>
+        <span class="text-hairline-strong">/</span>
+        <span>Bioinformatics &middot; Development</span>
+      </div>
+
+      <div class="font-mono text-xs text-text-faint flex items-center gap-3">
+        <span class="flex items-center gap-1.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss animate-pulse"></span>
+          System Online
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
