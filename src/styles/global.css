@@ -15,26 +15,26 @@
    ============================================ */
 
 @theme {
-  /* Surface hierarchy */
-  --color-base: #1a1a1a;
-  --color-surface: #242424;
-  --color-elevated: #2e2e2e;
-  --color-overlay: #383838;
+  /* Surface hierarchy — warm charcoal, not pitch black */
+  --color-base: #1e1e20;
+  --color-surface: #282830;
+  --color-elevated: #323238;
+  --color-overlay: #3c3c42;
 
   /* Earth-tone accents (desaturated syntax colors) */
-  --color-moss: #7a9a6d;
-  --color-indigo: #6e7bb8;
-  --color-terracotta: #c07050;
-  --color-amber: #b89a5a;
+  --color-moss: #88a87a;
+  --color-indigo: #7e8dc8;
+  --color-terracotta: #d08060;
+  --color-amber: #c8a86a;
 
-  /* Text */
-  --color-text: #e8e0d8;
-  --color-text-muted: #8a8278;
-  --color-text-faint: #5a5550;
+  /* Text — brighter for readability */
+  --color-text: #f0ebe4;
+  --color-text-muted: #a09890;
+  --color-text-faint: #706860;
 
-  /* Borders */
-  --color-hairline: rgba(255, 255, 255, 0.08);
-  --color-hairline-strong: rgba(255, 255, 255, 0.15);
+  /* Borders — slightly more visible */
+  --color-hairline: rgba(255, 255, 255, 0.10);
+  --color-hairline-strong: rgba(255, 255, 255, 0.20);
 
   /* Typography */
   --font-serif: "Lora", Georgia, "Times New Roman", serif;

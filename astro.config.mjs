@@ -15,4 +15,10 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'hover',
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'vitesse-dark',
+      wrap: true,
+    },
+  },
 });

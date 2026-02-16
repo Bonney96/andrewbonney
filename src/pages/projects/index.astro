@@ -3,10 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import ProjectCard from '../../components/ProjectCard.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const deployments = allProjects.filter((p) => p.data.category === 'deployment');
+const research = allProjects.filter((p) => p.data.category === 'research');
 ---
 
-<BaseLayout title="Projects" description="Active deployments and tools by Andrew Bonney">
+<BaseLayout title="Projects" description="Active deployments, research, and tools by Andrew Bonney">
   <section class="py-20 sm:py-28">
     <div class="mx-auto max-w-5xl px-6">
       <!-- Page header -->
@@ -19,21 +21,43 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       <div class="mb-12 border-b border-hairline pb-4">
         <span class="font-mono text-xs text-text-faint uppercase tracking-wider block mb-2">Index</span>
         <h1 class="font-serif text-4xl sm:text-5xl font-bold">Projects</h1>
-        <p class="text-text-muted mt-3">Active deployments, tools, and research platforms.</p>
+        <p class="text-text-muted mt-3">Active deployments, research platforms, and select portfolio work.</p>
       </div>
 
-      <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {projects.map((project) => (
-          <ProjectCard
-            title={project.data.title}
-            description={project.data.description}
-  
-            tags={project.data.tags}
-            status={project.data.status}
-            slug={project.id}
-          />
-        ))}
+      <!-- Deployments -->
+      <div class="mb-10">
+        <h2 class="font-mono text-xs text-moss uppercase tracking-wider mb-4">
+          Active Deployments
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {deployments.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              status={project.data.status}
+              slug={project.id}
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Research -->
+      <div>
+        <h2 class="font-mono text-xs text-terracotta uppercase tracking-wider mb-4">
+          Research &amp; Select Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {research.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              status={project.data.status}
+              slug={project.id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   </section>

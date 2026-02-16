@@ -1,0 +1,80 @@
+---
+import { skillCategories } from '../data/skills';
+
+const levelBars: Record<string, string> = {
+  advanced: '████████',
+  proficient: '██████░░',
+  familiar: '████░░░░',
+};
+
+const levelColors: Record<string, string> = {
+  advanced: 'text-text',
+  proficient: 'text-text-muted',
+  familiar: 'text-text-faint',
+};
+
+const accentMap: Record<string, string> = {
+  moss: 'text-moss',
+  indigo: 'text-indigo',
+  terracotta: 'text-terracotta',
+  amber: 'text-amber',
+  'text-muted': 'text-text-muted',
+};
+---
+
+<section id="skills" class="py-20 sm:py-28 bg-surface/30">
+  <div class="mx-auto max-w-5xl px-6">
+    <!-- Section header -->
+    <div class="mb-12 flex items-end justify-between border-b border-hairline pb-4">
+      <div>
+        <span class="font-mono text-xs text-text-faint uppercase tracking-wider block mb-2">02</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Technical Skills</h2>
+      </div>
+      <span class="font-mono text-xs text-text-faint">
+        {skillCategories.reduce((sum, cat) => sum + cat.skills.length, 0)} capabilities
+      </span>
+    </div>
+
+    <!-- Skills grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {skillCategories.map((category) => (
+        <div class="border border-hairline rounded-sm overflow-hidden">
+          <!-- Category header -->
+          <div class="bg-elevated px-4 py-2.5 border-b border-hairline flex items-center justify-between">
+            <span class={`font-mono text-xs font-medium ${accentMap[category.accent]}`}>
+              {category.label}
+            </span>
+            <span class="font-mono text-[10px] text-text-faint">
+              {category.id}://
+            </span>
+          </div>
+
+          <!-- Skills list -->
+          <div class="bg-surface/30 px-4 py-3">
+            <div class="space-y-1.5">
+              {category.skills.map((skill) => (
+                <div class="flex items-center justify-between gap-3">
+                  <span class="font-mono text-xs text-text-muted truncate">
+                    {skill.name}
+                  </span>
+                  {skill.level && (
+                    <span class={`font-mono text-[10px] tracking-tighter ${levelColors[skill.level]} shrink-0`}>
+                      {levelBars[skill.level]}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Legend -->
+    <div class="mt-6 flex flex-wrap gap-6 font-mono text-[10px] text-text-faint">
+      <span>████████ advanced</span>
+      <span>██████░░ proficient</span>
+      <span>████░░░░ familiar</span>
+    </div>
+  </div>
+</section>

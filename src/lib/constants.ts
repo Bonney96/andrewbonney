@@ -7,7 +7,8 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: 'Projects', href: '/#projects' },
-  { label: 'Timeline', href: '/#timeline' },
+  { label: 'Skills', href: '/#skills' },
+  { label: 'Experience', href: '/#timeline' },
   { label: 'Lab', href: '/lab' },
 ] as const;
 

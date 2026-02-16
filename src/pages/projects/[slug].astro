@@ -13,17 +13,19 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 
-const statusColors = {
+const statusColors: Record<string, string> = {
   'live': 'bg-moss/20 text-moss',
   'beta': 'bg-amber/20 text-amber',
   'coming-soon': 'bg-indigo/20 text-indigo',
-} as const;
+  'portfolio': 'bg-terracotta/20 text-terracotta',
+};
 
-const statusLabels = {
+const statusLabels: Record<string, string> = {
   'live': 'Live',
   'beta': 'Beta',
   'coming-soon': 'Coming Soon',
-} as const;
+  'portfolio': 'Research',
+};
 ---
 
 <BaseLayout title={project.data.title} description={project.data.description}>
@@ -42,6 +44,11 @@ const statusLabels = {
           <span class={`inline-flex items-center px-2 py-0.5 rounded-sm font-mono text-[10px] uppercase tracking-wider ${statusColors[project.data.status]}`}>
             {statusLabels[project.data.status]}
           </span>
+          {project.data.category === 'research' && (
+            <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider">
+              Select Project
+            </span>
+          )}
         </div>
 
         <h1 class="font-serif text-4xl sm:text-5xl font-bold mb-4" transition:name={`project-title-${project.id}`}>
@@ -54,7 +61,7 @@ const statusLabels = {
 
         <!-- Metadata bar -->
         <div class="flex flex-wrap items-center gap-4 py-3 border-y border-hairline">
-          {project.data.status !== 'coming-soon' && (
+          {project.data.url && project.data.status !== 'coming-soon' && (
             <a
               href={project.data.url}
               target="_blank"

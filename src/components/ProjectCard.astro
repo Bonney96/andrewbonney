@@ -3,23 +3,25 @@ interface Props {
   title: string;
   description: string;
   tags: string[];
-  status: 'live' | 'beta' | 'coming-soon';
+  status: 'live' | 'beta' | 'coming-soon' | 'portfolio';
   slug: string;
 }
 
 const { title, description, tags, status, slug } = Astro.props;
 
-const statusColors = {
+const statusColors: Record<string, string> = {
   'live': 'bg-moss/20 text-moss',
   'beta': 'bg-amber/20 text-amber',
   'coming-soon': 'bg-indigo/20 text-indigo',
-} as const;
+  'portfolio': 'bg-terracotta/20 text-terracotta',
+};
 
-const statusLabels = {
+const statusLabels: Record<string, string> = {
   'live': 'Live',
   'beta': 'Beta',
   'coming-soon': 'Initializing...',
-} as const;
+  'portfolio': 'Research',
+};
 ---
 
 <article class="group relative border border-hairline rounded-sm bg-surface/50 hover:bg-surface hover:border-hairline-strong transition-all duration-300">
@@ -37,7 +39,7 @@ const statusLabels = {
 
   <!-- Card body -->
   <div class="px-5 py-5">
-    <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-moss transition-colors">
+    <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-moss transition-colors" transition:name={`project-title-${slug}`}>
       <a href={`/projects/${slug}`} class="after:absolute after:inset-0">
         {title}
       </a>
@@ -56,10 +58,8 @@ const statusLabels = {
     ))}
   </div>
 
-  <!-- External link indicator -->
-  {status !== 'coming-soon' && (
-    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-      <span class="font-mono text-xs text-text-faint">&nearr;</span>
-    </div>
-  )}
+  <!-- Arrow indicator -->
+  <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+    <span class="font-mono text-xs text-text-faint">&nearr;</span>
+  </div>
 </article>

@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const deployments = allProjects.filter((p) => p.data.category === 'deployment');
+const research = allProjects.filter((p) => p.data.category === 'research');
 ---
 
 <section id="projects" class="py-20 sm:py-28">
@@ -14,22 +16,44 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
         <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Projects</h2>
       </div>
       <span class="font-mono text-xs text-text-faint">
-        {projects.length} entries
+        {allProjects.length} entries
       </span>
     </div>
 
-    <!-- Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {projects.map((project) => (
-        <ProjectCard
-          title={project.data.title}
-          description={project.data.description}
+    <!-- Deployments -->
+    <div class="mb-10">
+      <h3 class="font-mono text-xs text-moss uppercase tracking-wider mb-4">
+        Active Deployments
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {deployments.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
+            status={project.data.status}
+            slug={project.id}
+          />
+        ))}
+      </div>
+    </div>
 
-          tags={project.data.tags}
-          status={project.data.status}
-          slug={project.id}
-        />
-      ))}
+    <!-- Research / Portfolio -->
+    <div>
+      <h3 class="font-mono text-xs text-terracotta uppercase tracking-wider mb-4">
+        Research &amp; Select Projects
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {research.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
+            status={project.data.status}
+            slug={project.id}
+          />
+        ))}
+      </div>
     </div>
   </div>
 </section>

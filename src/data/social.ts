@@ -12,12 +12,12 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/andrewbonney',
+    href: 'https://www.linkedin.com/in/andrew-bonney/',
     icon: 'linkedin',
   },
   {
     label: 'Email',
-    href: 'mailto:bonney7@gmail.com',
+    href: 'mailto:abonney@wustl.edu',
     icon: 'mail',
   },
 ];

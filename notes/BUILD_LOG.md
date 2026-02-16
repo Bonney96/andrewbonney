@@ -56,7 +56,52 @@
 - `astro build`: 8 pages built successfully
 - All CSS/fonts/theme rendering confirmed
 
-## Build Stats
+---
+
+## Session 2 — 2026-02-16 (Improvements)
+
+### Fix: Palette Readability ✅
+- Lightened all background colors (~2-3 steps warmer/lighter)
+- Brightened text and muted text for better contrast
+- Bumped accent colors slightly for visibility
+- Increased hairline border opacity
+
+### Update: Real Resume Data ✅
+- Full professional timeline: WashU, Pfizer, ThermoFisher, Firmenich, Bayer, SLU, UMKC
+- Updated social links: abonney@wustl.edu, /in/andrew-bonney/
+- Updated hero tagline with real professional summary
+- Added location field to timeline entries
+
+### New: Skills Matrix Section ✅
+- Terminal-style grid organized by category
+- 5 categories: Languages, Workflow & Cloud, Bioinformatics, Data Science & AI, Regulatory & QC
+- Monospace proficiency bars (████████ advanced / ██████░░ proficient / ████░░░░ familiar)
+- Category accent colors matching design system
+
+### New: Research Projects ✅
+- Added 3 new content collection entries: nf-core/scge, DeepLabCut, BERT Sequence Classification
+- New `category` field (deployment vs research) and `portfolio` status
+- ProjectGrid now shows "Active Deployments" and "Research & Select Projects" sub-sections
+
+### New: View Transitions ✅
+- `transition:name` on project card titles → morphs to detail page heading
+- Smooth cross-page animations via ClientRouter
+
+### New: Shiki Syntax Highlighting ✅
+- Configured `vitesse-dark` theme for markdown code blocks
+- Word wrap enabled
+
+### Updated Nav
+- Added "Skills" and "Experience" nav links
+- Renamed "Timeline" section to "Experience"
+- Renumbered all sections (01-05)
+
+## Build Stats (Session 2)
+- 11 pages generated (3 new project detail pages)
+- 0 TypeScript errors
+- Build time: 2.28s
+
+## Build Stats (Session 1)
 - 8 pages generated
 - 0 TypeScript errors
 - JS bundles: ~15.5KB (ClientRouter for view transitions)

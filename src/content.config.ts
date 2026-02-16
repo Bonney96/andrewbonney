@@ -6,12 +6,13 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    url: z.string().url(),
+    url: z.string().url().optional(),
     repo: z.string().url().optional(),
     tags: z.array(z.string()),
     featured: z.boolean().default(false),
     order: z.number().default(0),
-    status: z.enum(['live', 'beta', 'coming-soon']).default('live'),
+    status: z.enum(['live', 'beta', 'coming-soon', 'portfolio']).default('live'),
+    category: z.enum(['deployment', 'research']).default('deployment'),
   }),
 });
 

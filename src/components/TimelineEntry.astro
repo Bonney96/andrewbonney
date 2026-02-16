@@ -24,11 +24,14 @@ const typeColors = {
 
   <!-- Content -->
   <div>
-    <!-- Date and type -->
-    <div class="flex items-center gap-3 mb-1.5">
+    <!-- Date, type, and location -->
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1.5">
       <span class="font-serif text-sm text-text-muted">{entry.date}</span>
       <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider">
         {entry.type}
+      </span>
+      <span class="font-mono text-[10px] text-text-faint">
+        {entry.location}
       </span>
     </div>
 
