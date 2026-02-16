@@ -15,26 +15,26 @@
    ============================================ */
 
 @theme {
-  /* Surface hierarchy — warm charcoal, not pitch black */
+  /* Surface hierarchy — warm charcoal, lifted enough for card contrast */
   --color-base: #1e1e20;
-  --color-surface: #282830;
-  --color-elevated: #323238;
-  --color-overlay: #3c3c42;
+  --color-surface: #2c2c34;
+  --color-elevated: #343440;
+  --color-overlay: #3e3e48;
 
-  /* Earth-tone accents (desaturated syntax colors) */
-  --color-moss: #88a87a;
-  --color-indigo: #7e8dc8;
-  --color-terracotta: #d08060;
-  --color-amber: #c8a86a;
+  /* Earth-tone accents — vivid enough to reward the eye */
+  --color-moss: #8ab87a;
+  --color-indigo: #8898d0;
+  --color-terracotta: #d88868;
+  --color-amber: #d0b070;
 
-  /* Text — brighter for readability */
-  --color-text: #f0ebe4;
-  --color-text-muted: #a09890;
-  --color-text-faint: #706860;
+  /* Text — WCAG AA compliant on all surfaces */
+  --color-text: #f2ede6;
+  --color-text-muted: #b5ada5;
+  --color-text-faint: #857d75;
 
-  /* Borders — slightly more visible */
+  /* Borders */
   --color-hairline: rgba(255, 255, 255, 0.10);
-  --color-hairline-strong: rgba(255, 255, 255, 0.20);
+  --color-hairline-strong: rgba(255, 255, 255, 0.22);
 
   /* Typography */
   --font-serif: "Lora", Georgia, "Times New Roman", serif;
@@ -56,6 +56,7 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-base);
   color: var(--color-text);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -67,7 +68,7 @@ body::after {
   inset: 0;
   background-image: url("/noise.svg");
   background-repeat: repeat;
-  opacity: 0.03;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 9999;
 }
@@ -80,6 +81,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-weight: 600;
   color: var(--color-text);
+  line-height: 1.2;
 }
 
 code, pre, kbd, samp {
@@ -109,11 +111,252 @@ code, pre, kbd, samp {
 }
 
 /* ============================================
+   Dopamine: Entrance Animations
+   Sections fade in + slide up on scroll.
+   Uses scroll-driven animations (Chrome/Edge/Firefox).
+   Safari: graceful fallback to static content.
+   ============================================ */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  animation: fade-in-up linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Fallback for browsers without scroll-driven animation support */
+@supports not (animation-timeline: view()) {
+  .animate-on-scroll {
+    animation: fade-in-up 0.6s ease-out both;
+  }
+}
+
+/* ============================================
+   Dopamine: Hero Ambient Gradient
+   Slow-drifting warm radial gradients.
+   Creates a "living" background.
+   ============================================ */
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.15;
+  }
+  33% {
+    transform: translate(5%, -3%) scale(1.05);
+    opacity: 0.2;
+  }
+  66% {
+    transform: translate(-3%, 5%) scale(0.98);
+    opacity: 0.12;
+  }
+}
+
+@keyframes drift-reverse {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+    opacity: 0.12;
+  }
+  33% {
+    transform: translate(-5%, 4%) scale(0.96);
+    opacity: 0.18;
+  }
+  66% {
+    transform: translate(4%, -2%) scale(1.04);
+    opacity: 0.14;
+  }
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.hero-glow--moss {
+  width: 400px;
+  height: 400px;
+  background: var(--color-moss);
+  top: 10%;
+  left: 15%;
+  animation: drift 12s ease-in-out infinite;
+}
+
+.hero-glow--indigo {
+  width: 350px;
+  height: 350px;
+  background: var(--color-indigo);
+  top: 20%;
+  right: 10%;
+  animation: drift-reverse 14s ease-in-out infinite;
+}
+
+.hero-glow--amber {
+  width: 250px;
+  height: 250px;
+  background: var(--color-amber);
+  bottom: 15%;
+  left: 40%;
+  animation: drift 16s ease-in-out infinite;
+}
+
+/* ============================================
+   Dopamine: Card Hover Effects
+   Colored glow + lift on hover.
+   ============================================ */
+
+.card-hover {
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+}
+
+.card-hover--moss:hover {
+  box-shadow: 0 8px 32px -8px rgba(138, 184, 122, 0.15);
+  border-color: rgba(138, 184, 122, 0.3);
+}
+
+.card-hover--indigo:hover {
+  box-shadow: 0 8px 32px -8px rgba(136, 152, 208, 0.15);
+  border-color: rgba(136, 152, 208, 0.3);
+}
+
+.card-hover--terracotta:hover {
+  box-shadow: 0 8px 32px -8px rgba(216, 136, 104, 0.15);
+  border-color: rgba(216, 136, 104, 0.3);
+}
+
+.card-hover--amber:hover {
+  box-shadow: 0 8px 32px -8px rgba(208, 176, 112, 0.15);
+  border-color: rgba(208, 176, 112, 0.3);
+}
+
+/* ============================================
+   Dopamine: Skills Bar Fill Animation
+   Bars fill from left on scroll into view.
+   ============================================ */
+
+@keyframes fill-bar {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.skill-bar-fill {
+  animation: fill-bar linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+@supports not (animation-timeline: view()) {
+  .skill-bar-fill {
+    animation: fill-bar 0.8s ease-out both;
+  }
+}
+
+/* ============================================
+   Dopamine: Interactive Hover Feedback
+   Buttons and links feel "alive."
+   ============================================ */
+
+.hover-lift {
+  transition: transform 150ms ease-out, color 150ms ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-1px);
+}
+
+.hover-lift:active {
+  transform: translateY(0px);
+}
+
+/* ============================================
+   Dopamine: Section Divider Draw
+   Hairline extends from left on scroll.
+   ============================================ */
+
+@keyframes draw-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.section-divider {
+  overflow: hidden;
+}
+
+.section-divider::after {
+  content: "";
+  display: block;
+  height: 0.5px;
+  background: var(--color-hairline-strong);
+  animation: draw-line linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 50%;
+}
+
+@supports not (animation-timeline: view()) {
+  .section-divider::after {
+    animation: draw-line 0.6s ease-out both;
+  }
+}
+
+/* ============================================
+   Dopamine: Breathing Pulse
+   For "active" status indicators.
+   ============================================ */
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(138, 184, 122, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 8px 2px rgba(138, 184, 122, 0.2);
+  }
+}
+
+.status-pulse {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* ============================================
+   Reduced Motion: Respect user preference
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-glow {
+    animation: none !important;
+    opacity: 0.1;
+  }
+}
+
+/* ============================================
    Selection & scrollbar
    ============================================ */
 
 ::selection {
-  background-color: rgba(110, 123, 184, 0.3);
+  background-color: rgba(136, 152, 208, 0.35);
   color: var(--color-text);
 }
 

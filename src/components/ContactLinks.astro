@@ -11,7 +11,7 @@ const iconPaths: Record<string, string> = {
 <section id="contact" class="py-20 sm:py-28 bg-surface/30">
   <div class="mx-auto max-w-5xl px-6">
     <!-- Section header -->
-    <div class="mb-12 flex items-end justify-between border-b border-hairline pb-4">
+    <div class="mb-12 flex items-end justify-between section-divider pb-4">
       <div>
         <span class="font-mono text-xs text-text-faint uppercase tracking-wider block mb-2">05</span>
         <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Connect</h2>
@@ -24,7 +24,7 @@ const iconPaths: Record<string, string> = {
           href={link.href}
           target={link.href.startsWith('mailto:') ? undefined : '_blank'}
           rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-          class="group flex items-center gap-3 px-5 py-3 border border-hairline rounded-sm hover:border-hairline-strong hover:bg-surface transition-all"
+          class="group flex items-center gap-3 px-5 py-3 border border-hairline rounded-sm hover:border-hairline-strong hover:bg-surface card-hover card-hover--moss transition-all"
         >
           <svg
             class="w-4 h-4 text-text-muted group-hover:text-moss transition-colors"

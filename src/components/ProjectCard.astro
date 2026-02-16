@@ -22,9 +22,16 @@ const statusLabels: Record<string, string> = {
   'coming-soon': 'Initializing...',
   'portfolio': 'Research',
 };
+
+const hoverGlow: Record<string, string> = {
+  'live': 'card-hover--moss',
+  'beta': 'card-hover--amber',
+  'coming-soon': 'card-hover--indigo',
+  'portfolio': 'card-hover--terracotta',
+};
 ---
 
-<article class="group relative border border-hairline rounded-sm bg-surface/50 hover:bg-surface hover:border-hairline-strong transition-all duration-300">
+<article class={`group relative border border-hairline rounded-sm bg-surface/50 hover:bg-surface card-hover ${hoverGlow[status]} animate-on-scroll`}>
   <!-- Card header with metadata -->
   <div class="px-5 pt-4 pb-3 border-b border-hairline flex items-center justify-between">
     <div class="flex items-center gap-3">

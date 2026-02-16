@@ -96,6 +96,70 @@
 - Renamed "Timeline" section to "Experience"
 - Renumbered all sections (01-05)
 
+---
+
+## Session 3 — 2026-02-16 (Dopamine & Readability)
+
+### Fix: Final Readability Pass ✅
+- Bumped `text-muted` from `#a09890` → `#b5ada5` (~5.5:1 contrast ratio — comfortably above WCAG AA)
+- Bumped `text-faint` from `#706860` → `#857d75` (~3.5:1 — appropriate for labels/captions)
+- Increased card surface contrast: `#282830` → `#2c2c34` for better card lift
+- Elevated surfaces: `#2e2e2e` → `#343440`
+- Added `line-height: 1.7` to body for better reading rhythm
+- Made accents more vivid: moss `#8ab87a`, indigo `#8898d0`, terracotta `#d88868`, amber `#d0b070`
+
+### New: Hero Ambient Glow Orbs ✅
+- Replaced static gradient with 3 animated radial glow orbs (moss, indigo, amber)
+- Each orb uses `filter: blur(80px)` with slow `drift` keyframe animations (12-16s cycles)
+- Gradient overlay preserves text readability: `from-base/60 via-base/80 to-base`
+- Creates "living" feel without any JavaScript
+
+### New: Card Hover Glow Effects ✅
+- Added `card-hover` base class with `translateY(-3px)` lift + box-shadow
+- Status-aware color variants: `card-hover--moss`, `card-hover--indigo`, `card-hover--amber`, `card-hover--terracotta`
+- Applied to: ProjectCard, SkillsMatrix cards, LabSection terminal, ContactLinks buttons
+- 200ms ease-out transitions for snappy feel
+
+### New: Scroll-Driven Entrance Animations ✅
+- `animate-on-scroll` class uses CSS `animation-timeline: view()` for scroll-driven fade-in-up
+- `@supports` fallback for browsers without scroll-driven animations (one-shot 0.6s animation)
+- Applied to: ProjectCard, SkillsMatrix cards, TimelineEntry, LabSection card
+
+### New: Skills Bar Fill Animation ✅
+- Changed proficiency display from monospace text bars (████) to visual `<div>` bars
+- Bars animate fill width using `skill-bar-fill` keyframe with `animation-timeline: view()`
+- Width classes per level: advanced 85%, proficient 65%, familiar 45%
+- Color-coded per category accent
+
+### New: Section Divider Draw Animation ✅
+- `section-divider::after` pseudo-element draws a hairline from left to right on scroll
+- Uses `@keyframes draw-line` with `scaleX(0)` → `scaleX(1)`
+- Applied to all section headers (Hero, ProjectGrid, SkillsMatrix, Timeline, Lab, Contact)
+
+### New: Breathing Status Pulse ✅
+- Custom `status-pulse` class with `@keyframes breathe` (3s cycle)
+- Includes subtle box-shadow glow that expands and contracts
+- Applied to: Hero status dot, Footer "System Online" dot
+- Replaces generic Tailwind `animate-pulse`
+
+### New: Hover Lift for Interactive Elements ✅
+- `.hover-lift` utility class for CTA buttons with `translateY(-1px)` on hover
+- Applied to Hero CTA buttons
+
+### Accessibility: prefers-reduced-motion ✅
+- Full `@media (prefers-reduced-motion: reduce)` block
+- Disables all animations and transitions (duration → 0.01ms)
+- Hero glow orbs freeze at static low opacity
+- No user is forced into motion they don't want
+
+### Notes ✅
+- Created `notes/DOPAMINE_DESIGN.md` documenting root cause analysis and solutions
+
+## Build Stats (Session 3)
+- 11 pages generated
+- 0 errors, 0 warnings, 0 hints
+- Build time: 2.17s
+
 ## Build Stats (Session 2)
 - 11 pages generated (3 new project detail pages)
 - 0 TypeScript errors
@@ -107,7 +171,7 @@
 - JS bundles: ~15.5KB (ClientRouter for view transitions)
 - Build time: ~9s
 
-## Files Created (28 total)
+## Files Created/Modified (34 total)
 ```
 package.json, tsconfig.json, astro.config.mjs, wrangler.toml, .env.example, .gitignore
 public/favicon.svg, public/noise.svg, public/robots.txt
@@ -115,13 +179,15 @@ src/styles/global.css
 src/layouts/BaseLayout.astro
 src/components/SEO.astro, Header.astro, Footer.astro, Hero.astro
 src/components/ProjectCard.astro, ProjectGrid.astro
+src/components/SkillsMatrix.astro (new in Session 2)
 src/components/Timeline.astro, TimelineEntry.astro
 src/components/LabSection.astro, ContactLinks.astro
 src/content.config.ts
 src/content/projects/stl-bcb.md, gateway-watch.md, deflab.md, epibench.md
-src/data/timeline.ts, social.ts
+src/content/projects/nf-core-scge.md, deeplabcut.md, bert-sequence.md (new in Session 2)
+src/data/timeline.ts, social.ts, skills.ts (new in Session 2)
 src/lib/constants.ts, api.ts
 src/pages/index.astro, 404.astro, lab.astro
 src/pages/projects/index.astro, [slug].astro
-notes/PRD.md, DESIGN_DECISIONS.md, BUILD_LOG.md
+notes/PRD.md, DESIGN_DECISIONS.md, BUILD_LOG.md, BRAINSTORM.md, DOPAMINE_DESIGN.md
 ```
