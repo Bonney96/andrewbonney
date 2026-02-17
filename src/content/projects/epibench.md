@@ -4,7 +4,7 @@ description: "An interactive bioinformatics demo for epigenetic analysis. Upload
 url: "https://andrewbonney.cloud/lab"
 tags: ["Bioinformatics", "Python", "Machine Learning", "FastAPI"]
 featured: true
-order: 4
+order: 3
 status: "coming-soon"
 ---
 

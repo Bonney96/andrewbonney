@@ -4,9 +4,11 @@ description: "A monitoring and analytics platform tracking real-time data stream
 url: "https://gateway-watch.pages.dev"
 tags: ["Monitoring", "Analytics", "TypeScript"]
 featured: true
-order: 2
+order: 4
 status: "live"
 ---
+
+Major work in progress
 
 Gateway Watch is a monitoring and analytics platform designed for tracking real-time data streams with high reliability. The system processes and visualizes data-dense information in an accessible format.
 

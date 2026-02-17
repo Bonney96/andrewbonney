@@ -1,7 +1,7 @@
 ---
 title: "nf-core/scge Pipeline"
 description: "Cloud-native tumor-normal sequencing pipeline for the NIH Common Fund's Somatic Cell Genome Editing program. Built with Nextflow DSL2 and DRAGEN hardware acceleration on AWS."
-repo: "https://github.com/Bonney96"
+repo: "https://github.com/dhslab/nf-core-scge"
 tags: ["Nextflow", "AWS Batch", "DRAGEN", "nf-core", "Genomics"]
 featured: true
 order: 5
