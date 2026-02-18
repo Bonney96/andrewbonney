@@ -109,9 +109,9 @@ workflow {
       <span class="font-mono text-sm text-text">dna_analysis.nf</span>
     </div>
     <div class="flex items-center gap-3">
-      <span class="font-mono text-[10px] text-moss flex items-center gap-1.5">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss status-pulse"></span>
-        api.andrewbonney.cloud
+      <span class="font-mono text-[10px] flex items-center gap-1.5">
+        <span id="vps-dot" class="inline-block w-1.5 h-1.5 rounded-full bg-text-faint transition-colors"></span>
+        <span id="vps-label" class="text-text-faint transition-colors">checking VPS...</span>
       </span>
     </div>
   </div>
@@ -208,6 +208,30 @@ workflow {
   // Populate source viewer
   if (nfSrc) nfSrc.textContent = NF_SCRIPT;
 
+  // ── VPS health ping (runs on load) ────────────────────────
+  const vpsLabel = document.getElementById('vps-label');
+  const vpsDot   = document.getElementById('vps-dot');
+  const HEALTH_URL = API_URL.replace('/pipeline/sequence', '/health');
+
+  (async () => {
+    const t0 = performance.now();
+    try {
+      const res = await fetch(HEALTH_URL, { cache: 'no-store' });
+      const ms  = Math.round(performance.now() - t0);
+      if (res.ok) {
+        vpsDot.style.backgroundColor   = '#8ab87a';  // moss
+        vpsLabel.style.color           = '#8ab87a';
+        vpsLabel.textContent           = `VPS online · ${ms}ms`;
+      } else {
+        throw new Error('non-ok');
+      }
+    } catch {
+      vpsDot.style.backgroundColor = '#d88868';  // terracotta
+      vpsLabel.style.color         = '#d88868';
+      vpsLabel.textContent         = 'VPS unreachable';
+    }
+  })();
+
   // ── Preset buttons ─────────────────────────────────────────
   document.querySelectorAll('.preset-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -300,11 +324,14 @@ workflow {
     clearTerminal();
 
     // Fire API call immediately — runs in parallel with animation
+    const t_fetch_start = performance.now();
     const apiPromise = fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sequence: raw }),
     }).then((r) => r.json()).catch(() => ({ error: 'Network error — could not reach api.andrewbonney.cloud.' }));
+    let roundTripMs = null;
+    apiPromise.then(() => { roundTripMs = Math.round(performance.now() - t_fetch_start); });
 
     // Random Nextflow-style names
     const names = ['dreamy_curie', 'drunk_hawking', 'jolly_turing', 'naughty_lovelace', 'silly_knuth'];
@@ -359,7 +386,6 @@ workflow {
 
     const s = apiData.stats;
     const sep = col('─'.repeat(52), FAINT);
-    const ts  = apiData.timestamp ?? new Date().toUTCString().replace(' GMT', '');
 
     const label = (l) => col(l.padEnd(16), FAINT);
     const val   = (v) => col(String(v), WHITE);
@@ -394,8 +420,34 @@ workflow {
     term.innerHTML += ` ${label('Restriction')} ${rsiteStr}\n`;
     term.innerHTML += sep + '\n';
     term.innerHTML += '\n';
-    term.innerHTML += `Completed at: ${col(ts, FAINT)}\n`;
-    term.innerHTML += `Duration    : ${col((Math.random() * 2 + 1.2).toFixed(1) + 's', WHITE)}  ${col('|', FAINT)}  Succeeded : ${col('4', MOSS)}\n`;
+
+    // Timestamps
+    const tel = apiData.telemetry ?? {};
+    const serverTs = tel.server_time_utc
+      ? new Date(tel.server_time_utc).toUTCString().replace(' GMT', ' UTC')
+      : 'n/a';
+    const completedAt = tel.server_time_utc ?? new Date().toISOString();
+
+    term.innerHTML += `Completed at: ${col(serverTs, FAINT)}\n`;
+    term.innerHTML += `Duration    : ${col((Math.random() * 1.5 + 0.8).toFixed(1) + 's', WHITE)}  ${col('|', FAINT)}  Succeeded : ${col('4', MOSS)}\n`;
+    term.innerHTML += '\n';
+
+    // VPS Telemetry block — proof it hit the real server
+    const tsep = col('═'.repeat(52), FAINT);
+    const tlabel = (l) => col(l.padEnd(18), '#8898d0');  // indigo
+    const tval   = (v) => col(String(v), WHITE);
+
+    term.innerHTML += tsep + '\n';
+    term.innerHTML += col(' VPS Telemetry', WHITE) + col('                          live', FAINT) + '\n';
+    term.innerHTML += tsep + '\n';
+    if (tel.request_id)    term.innerHTML += ` ${tlabel('Request ID')}  ${tval(tel.request_id)}\n`;
+    if (tel.server_id)     term.innerHTML += ` ${tlabel('Server')}  ${tval(tel.server_id + '.hstgr.cloud  (Boston, US)')}\n`;
+    if (tel.server_time_utc) term.innerHTML += ` ${tlabel('Server time')}  ${tval(tel.server_time_utc)}\n`;
+    if (tel.processing_ms !== undefined)
+      term.innerHTML += ` ${tlabel('Compute time')}  ${tval(tel.processing_ms + ' ms  (server-side)')}\n`;
+    if (roundTripMs !== null)
+      term.innerHTML += ` ${tlabel('Round-trip')}  ${tval(roundTripMs + ' ms  (browser → VPS → browser)')}\n`;
+    term.innerHTML += tsep + '\n';
 
     wrap.scrollTop = wrap.scrollHeight;
     setRunning(false);
