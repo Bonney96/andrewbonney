@@ -20,4 +20,9 @@ export const socialLinks: SocialLink[] = [
     href: 'mailto:abonney@wustl.edu',
     icon: 'mail',
   },
+  {
+    label: 'Schedule a Call',
+    href: 'https://cal.com/andrewbonney',
+    icon: 'cal',
+  },
 ];

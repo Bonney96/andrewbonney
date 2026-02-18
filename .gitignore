@@ -26,3 +26,6 @@ Thumbs.db
 
 # debug
 npm-debug.log*
+
+# private documents
+notes/Resumes/
