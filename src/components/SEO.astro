@@ -11,16 +11,44 @@ interface Props {
 const {
   title = SITE.title,
   description = SITE.description,
-  image = '/favicon.svg',
+  image = '/andrew-headshot.png',
   canonicalUrl = Astro.url.href,
 } = Astro.props;
 
 const fullTitle = title === SITE.title ? title : `${title} — ${SITE.title}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Andrew Bonney',
+  jobTitle: 'Bioinformatics Engineer',
+  description: 'Bioinformatics Engineer and Computational Systems Builder specializing in genomic pipeline development, machine learning for biology, and production infrastructure.',
+  url: SITE.url,
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Washington University in St. Louis',
+  },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Saint Louis University' },
+    { '@type': 'CollegeOrUniversity', name: 'University of Missouri-Kansas City' },
+  ],
+  sameAs: [
+    'https://github.com/Bonney96',
+    'https://www.linkedin.com/in/andrew-bonney/',
+  ],
+  knowsAbout: [
+    'Bioinformatics', 'Computational Biology', 'Genomics',
+    'Machine Learning', 'Nextflow', 'AWS', 'Python', 'Pipeline Development',
+    'Epigenomics', 'Single-cell RNA sequencing',
+  ],
+};
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
+<meta name="author" content="Andrew Bonney" />
+<meta name="keywords" content="bioinformatics, computational biology, genomics, Nextflow, pipeline development, machine learning, epigenomics, Washington University, St. Louis" />
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
@@ -33,9 +61,13 @@ const fullTitle = title === SITE.title ? title : `${title} — ${SITE.title}`;
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, SITE.url).href} />
+<meta property="og:site_name" content="Andrew Bonney" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(image, SITE.url).href} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

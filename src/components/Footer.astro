@@ -1,10 +1,57 @@
 ---
-import { SITE } from '../lib/constants';
+import { SITE, EXTERNAL_PROJECTS } from '../lib/constants';
 ---
 
 <footer class="border-t border-hairline mt-32">
-  <div class="mx-auto max-w-5xl px-6 py-8">
-    <!-- Telemetry-style footer -->
+  <div class="mx-auto max-w-5xl px-6 py-10">
+    <!-- Cross-links to live deployments -->
+    <div class="mb-8 pb-8 border-b border-hairline">
+      <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider block mb-4">Live Projects</span>
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        <a
+          href={EXTERNAL_PROJECTS.stlBcb}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-text-muted hover:text-moss transition-colors flex items-center gap-1"
+        >
+          STL BCB Collective &#8599;
+        </a>
+        <a
+          href={EXTERNAL_PROJECTS.deflab}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-text-muted hover:text-moss transition-colors flex items-center gap-1"
+        >
+          Frantz Lab &#8599;
+        </a>
+        <a
+          href={EXTERNAL_PROJECTS.gatewayWatch}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-text-muted hover:text-moss transition-colors flex items-center gap-1"
+        >
+          Gateway Watch &#8599;
+        </a>
+        <a
+          href="https://github.com/Bonney96"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-text-muted hover:text-indigo transition-colors flex items-center gap-1"
+        >
+          GitHub &#8599;
+        </a>
+        <a
+          href="https://www.linkedin.com/in/andrew-bonney/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs text-text-muted hover:text-indigo transition-colors flex items-center gap-1"
+        >
+          LinkedIn &#8599;
+        </a>
+      </div>
+    </div>
+
+    <!-- Telemetry-style footer bottom bar -->
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div class="font-mono text-xs text-text-faint flex flex-wrap items-center gap-x-3 gap-y-1">
         <span>&copy; {new Date().getFullYear()} {SITE.title}</span>

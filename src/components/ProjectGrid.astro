@@ -33,6 +33,8 @@ const research = allProjects.filter((p) => p.data.category === 'research');
             tags={project.data.tags}
             status={project.data.status}
             slug={project.id}
+            url={project.data.url}
+            repo={project.data.repo}
           />
         ))}
       </div>
@@ -51,6 +53,8 @@ const research = allProjects.filter((p) => p.data.category === 'research');
             tags={project.data.tags}
             status={project.data.status}
             slug={project.id}
+            url={project.data.url}
+            repo={project.data.repo}
           />
         ))}
       </div>

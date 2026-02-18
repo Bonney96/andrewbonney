@@ -19,6 +19,14 @@ const { title, description, image } = Astro.props;
   <head>
     <SEO title={title} description={description} image={image} />
     <ClientRouter />
+    <!-- Cloudflare Web Analytics — set CF_BEACON_TOKEN in your environment -->
+    {import.meta.env.PUBLIC_CF_BEACON_TOKEN && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={`{"token": "${import.meta.env.PUBLIC_CF_BEACON_TOKEN}"}`}
+      />
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />

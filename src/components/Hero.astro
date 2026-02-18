@@ -18,11 +18,17 @@
       <!-- Left: text content -->
       <div class="flex-1 min-w-0">
         <!-- Status line -->
-        <div class="font-mono text-xs text-text-faint mb-8 flex items-center gap-2">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss status-pulse"></span>
-          <span>andrewbonney.cloud</span>
-          <span class="text-hairline-strong">//</span>
-          <span>St. Louis, MO</span>
+        <div class="font-mono text-xs text-text-faint mb-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span class="flex items-center gap-2">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss status-pulse"></span>
+            <span>andrewbonney.cloud</span>
+            <span class="text-hairline-strong">//</span>
+            <span>St. Louis, MO</span>
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-amber/30 rounded-sm bg-amber/10 text-amber">
+            <span class="inline-block w-1 h-1 rounded-full bg-amber"></span>
+            Open to full-time roles
+          </span>
         </div>
 
         <!-- Name -->
@@ -48,10 +54,19 @@
         <!-- CTAs -->
         <div class="flex flex-wrap gap-4">
           <a
+            href="https://cal.com/andrewbonney"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-amber/40 rounded font-mono text-sm text-amber bg-amber/10 hover:bg-amber/20 hover:border-amber/60 transition-all"
+          >
+            Schedule a Call
+            <span>&rarr;</span>
+          </a>
+          <a
             href="#projects"
             class="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-hairline-strong rounded font-mono text-sm text-text hover:bg-surface hover:border-moss/40 transition-all"
           >
-            View Projects
+            View My Work
             <span class="text-text-muted">&darr;</span>
           </a>
           <a
@@ -71,7 +86,7 @@
           <div class="absolute inset-0 translate-x-2 translate-y-2 border border-moss/30 rounded-sm"></div>
           <img
             src="/andrew-headshot.png"
-            alt="Andrew Bonney"
+            alt="Andrew Bonney, Bioinformatics Engineer at Washington University"
             class="relative w-full h-full object-cover object-top rounded-sm border border-hairline-strong"
             loading="eager"
             fetchpriority="high"

@@ -7,6 +7,10 @@ const iconPaths: Record<string, string> = {
   mail: 'M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z',
   cal: 'M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 21c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 20H5V8h14v13z',
 };
+
+// Separate the scheduling CTA from the rest for visual hierarchy
+const schedulingLink = socialLinks.find((l) => l.icon === 'cal');
+const otherLinks = socialLinks.filter((l) => l.icon !== 'cal');
 ---
 
 <section id="contact" class="py-20 sm:py-28 bg-surface/30">
@@ -24,8 +28,35 @@ const iconPaths: Record<string, string> = {
       Open to research collaborations, pipeline development work, and interesting problems at the intersection of biology and computation. Reach out via any of the channels below.
     </p>
 
-    <div class="flex flex-wrap gap-6 mb-12">
-      {socialLinks.map((link) => (
+    <!-- Primary CTA: Schedule a Call -->
+    {schedulingLink && (
+      <div class="mb-8">
+        <a
+          href={schedulingLink.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-3 px-6 py-4 border border-amber/40 rounded-sm bg-amber/10 hover:bg-amber/20 hover:border-amber/60 card-hover transition-all"
+        >
+          <svg
+            class="w-5 h-5 text-amber"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d={iconPaths[schedulingLink.icon]} />
+          </svg>
+          <div>
+            <span class="font-mono text-sm text-amber block">Schedule a Call</span>
+            <span class="font-mono text-xs text-text-faint">Book time via cal.com/andrewbonney</span>
+          </div>
+          <span class="ml-2 font-mono text-sm text-amber/60 group-hover:text-amber transition-colors">&rarr;</span>
+        </a>
+      </div>
+    )}
+
+    <!-- Other contact methods -->
+    <div class="flex flex-wrap gap-4 mb-12">
+      {otherLinks.map((link) => (
         <a
           href={link.href}
           target={link.href.startsWith('mailto:') ? undefined : '_blank'}
@@ -36,6 +67,7 @@ const iconPaths: Record<string, string> = {
             class="w-4 h-4 text-text-muted group-hover:text-moss transition-colors"
             viewBox="0 0 24 24"
             fill="currentColor"
+            aria-hidden="true"
           >
             <path d={iconPaths[link.icon]} />
           </svg>
