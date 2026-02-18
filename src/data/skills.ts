@@ -148,7 +148,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Data Integrity & Audit Trails', level: 'advanced' },
       { name: 'LIMS', level: 'proficient' },
       { name: 'ICH Guidelines', level: 'proficient' },
-      { name: 'CAPA / SOP Development', level: 'proficient' },
+      { name: 'CAPA / SOP Development', level: 'advanced' },
     ],
   },
 ];
