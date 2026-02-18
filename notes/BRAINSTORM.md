@@ -99,6 +99,36 @@ Could pull from ORCID API in the future.
 ### 15. RSS Feed (Future)
 If blog/writing is added later, Astro has built-in RSS feed support.
 
+## Lab Page — VPS Portal Vision
+
+The `/lab` page will evolve into a live window into the Hostinger VPS backend
+at `api.andrewbonney.cloud`. Three phases:
+
+### Phase 1 — Heartbeat Dashboard (unblock: VPS + FastAPI running)
+- Poll `GET /health` endpoint, show service status tiles:
+  - openclaw (Ollama assistant) — online/offline + uptime
+  - EpiBench API — online/offline
+  - VPS system (CPU, memory, uptime)
+- Static Astro page with a small inline `<script>` fetch loop (no framework needed)
+- Fits the Cognitive Brutalism aesthetic: monospace readouts, colored status dots
+
+### Phase 2 — openclaw Interface (unblock: Phase 1 + Ollama + persistent memory)
+- Chat window that proxies to Ollama on the VPS via FastAPI
+- Display: model name, memory state (last N interactions), heartbeat timestamp
+- Implementation: Astro React island (`@astrojs/react`) so only the chat widget
+  ships JS — rest of the page stays static
+- Shows off: self-hosted LLM, persistent memory architecture, real-time AI
+
+### Phase 3 — EpiBench Lite (unblock: Phase 2 + model serving)
+- File upload → POST /predict → methylation prediction → results viz
+- Already described in current lab.astro placeholder
+
+### Key architectural note
+- Frontend: Cloudflare Pages (static Astro)
+- Backend: Hostinger VPS, FastAPI, Ollama, systemd-managed services with heartbeat
+- Bridge: CORS-enabled FastAPI at api.andrewbonney.cloud
+- Interactive islands only where needed — keep the rest zero-JS
+
 ## Priority Implementation Order
 1. Fix readability (lighten palette) — CRITICAL
 2. Update with real resume data — HIGH

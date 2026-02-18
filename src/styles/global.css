@@ -252,7 +252,7 @@ code, pre, kbd, samp {
 
 @keyframes fill-bar {
   from { width: 0; }
-  to { width: 100%; }
+  to { width: var(--bar-width, 100%); }
 }
 
 .skill-bar-fill {

@@ -2,9 +2,9 @@
 import { skillCategories } from '../data/skills';
 
 const levelWidths: Record<string, string> = {
-  advanced: 'w-full',
-  proficient: 'w-3/4',
-  familiar: 'w-1/2',
+  advanced: '85%',
+  proficient: '62%',
+  familiar: '38%',
 };
 
 const accentMap: Record<string, string> = {
@@ -40,7 +40,7 @@ const barColorMap: Record<string, string> = {
     <!-- Skills grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {skillCategories.map((category) => (
-        <div class="border border-hairline rounded-sm overflow-hidden card-hover animate-on-scroll">
+        <div class={`border border-hairline rounded-sm overflow-hidden card-hover animate-on-scroll${category.fullWidth ? ' md:col-span-2' : ''}`}>
           <!-- Category header -->
           <div class="bg-elevated px-4 py-2.5 border-b border-hairline flex items-center justify-between">
             <span class={`font-mono text-xs font-medium ${accentMap[category.accent]}`}>
@@ -53,7 +53,7 @@ const barColorMap: Record<string, string> = {
 
           <!-- Skills list -->
           <div class="bg-surface/30 px-4 py-3">
-            <div class="space-y-2.5">
+            <div class={category.fullWidth ? 'grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5' : 'space-y-2.5'}>
               {category.skills.map((skill) => (
                 <div>
                   <div class="flex items-center justify-between gap-3 mb-1">
@@ -68,7 +68,10 @@ const barColorMap: Record<string, string> = {
                   </div>
                   {skill.level && (
                     <div class="h-1 bg-base rounded-full overflow-hidden">
-                      <div class={`h-full ${barColorMap[category.accent]} rounded-full skill-bar-fill opacity-60 ${levelWidths[skill.level]}`}></div>
+                      <div
+                        class={`h-full ${barColorMap[category.accent]} rounded-full skill-bar-fill opacity-70`}
+                        style={`--bar-width: ${levelWidths[skill.level]}`}
+                      ></div>
                     </div>
                   )}
                 </div>
