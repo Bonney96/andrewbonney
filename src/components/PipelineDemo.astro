@@ -1,0 +1,403 @@
+---
+import { SITE } from '../lib/constants';
+
+const API_URL = `${SITE.apiUrl}/pipeline/sequence`;
+
+const PRESETS = [
+  { label: 'Telomere', seq: 'TTAGGGTTAGGGTTAGGGTTAGGGTTAGGG' },
+  { label: 'EcoRI site', seq: 'GCTAGCTAGCGAATTCATCGATCGATCG' },
+  { label: 'GC-rich', seq: 'GCGCGCGCGCGCGCGCGCATCGATCGATCG' },
+];
+
+// \${ escapes prevent JS template literal from interpolating Nextflow ${params.*} syntax
+const NF_SCRIPT = `#!/usr/bin/env nextflow
+nextflow.enable.dsl=2
+
+params.sequence = 'ATCGATCG'
+params.outdir   = './results'
+
+process VALIDATE_SEQUENCE {
+    tag "validation"
+    input:  val seq
+    output: val seq
+    script:
+    """
+    python3 -c "
+seq = '\${params.sequence}'.upper()
+assert all(c in set('ATCGN') for c in seq), 'Invalid base'
+assert 10 <= len(seq) <= 500, 'Length out of range'
+print(f'Validated: {len(seq)} bp')
+"
+    """
+}
+
+process COMPUTE_STATS {
+    tag "stats"
+    publishDir params.outdir, mode: 'copy'
+    input:  val seq
+    output: path "stats.txt"
+    script:
+    """
+    python3 -c "
+seq = '\${params.sequence}'.upper()
+gc = (seq.count('G') + seq.count('C')) / len(seq) * 100
+at = 100 - gc
+g, c = seq.count('G'), seq.count('C')
+skew = (g - c) / (g + c) if (g + c) else 0
+kmers = {}
+for i in range(len(seq) - 2):
+    k = seq[i:i+3]; kmers[k] = kmers.get(k, 0) + 1
+with open('stats.txt', 'w') as f:
+    f.write(f'GC: {gc:.1f}%  AT: {at:.1f}%  Skew: {skew:+.3f}')
+"
+    """
+}
+
+process REVERSE_COMPLEMENT {
+    tag "revcomp"
+    publishDir params.outdir, mode: 'copy'
+    input:  val seq
+    output: path "revcomp.txt"
+    script:
+    """
+    python3 -c "
+seq = '\${params.sequence}'.upper()
+rc = seq.translate(str.maketrans('ATCGN','TAGCN'))[::-1]
+open('revcomp.txt','w').write(rc)
+"
+    """
+}
+
+process MOTIF_SCAN {
+    tag "motifs"
+    publishDir params.outdir, mode: 'copy'
+    input:  val seq
+    output: path "motifs.txt"
+    script:
+    """
+    python3 -c "
+import re, json
+seq = '\${params.sequence}'.upper()
+sites = {'EcoRI':'GAATTC','BamHI':'GGATCC',
+         'HindIII':'AAGCTT','NotI':'GCGGCCGC'}
+out = {k:[m.start()+1 for m in re.finditer(v,seq)]
+       for k,v in sites.items()}
+open('motifs.txt','w').write(json.dumps(out))
+"
+    """
+}
+
+workflow {
+    ch = Channel.of(params.sequence)
+    v  = VALIDATE_SEQUENCE(ch)
+    COMPUTE_STATS(v)
+    REVERSE_COMPLEMENT(v)
+    MOTIF_SCAN(v)
+}`;
+---
+
+<div class="border border-hairline rounded-sm overflow-hidden max-w-3xl" id="pipeline-demo">
+
+  <!-- Title bar -->
+  <div class="bg-elevated px-5 py-3 border-b border-hairline flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="flex gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-terracotta/60"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-amber/60"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-moss/60"></span>
+      </div>
+      <span class="font-mono text-sm text-text">dna_analysis.nf</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-[10px] text-moss flex items-center gap-1.5">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss status-pulse"></span>
+        api.andrewbonney.cloud
+      </span>
+    </div>
+  </div>
+
+  <!-- Input panel -->
+  <div class="bg-surface/50 px-5 py-5 border-b border-hairline">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+      <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider">Input Sequence (ATCGN, 10–500 bp)</span>
+      <span id="char-counter" class="font-mono text-[10px] text-text-faint sm:ml-auto">0 / 500 bp</span>
+    </div>
+
+    <textarea
+      id="seq-input"
+      rows="3"
+      spellcheck="false"
+      autocomplete="off"
+      placeholder="Paste or type a DNA sequence, e.g. ATCGATCGATCGATCG..."
+      class="w-full bg-base border border-hairline rounded-sm font-mono text-sm text-text placeholder:text-text-faint px-4 py-3 resize-none focus:outline-none focus:border-moss/40 transition-colors"
+    ></textarea>
+
+    <!-- Preset examples -->
+    <div class="flex flex-wrap items-center gap-2 mt-3">
+      <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider">Presets:</span>
+      {PRESETS.map((p) => (
+        <button
+          class="preset-btn font-mono text-[11px] px-2 py-1 border border-hairline rounded-sm text-text-muted hover:text-text hover:border-hairline-strong transition-all"
+          data-seq={p.seq}
+        >
+          {p.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Run button -->
+  <div class="bg-surface/30 px-5 py-4 border-b border-hairline">
+    <button
+      id="run-btn"
+      class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border border-amber/40 rounded font-mono text-sm text-amber bg-amber/10 hover:bg-amber/20 hover:border-amber/60 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+    >
+      <span id="run-icon">&#9654;</span>
+      <span id="run-label">Run Pipeline</span>
+    </button>
+    <span id="run-error" class="font-mono text-xs text-terracotta ml-4 hidden"></span>
+  </div>
+
+  <!-- Terminal output (hidden until first run) -->
+  <div id="terminal-wrap" class="hidden">
+    <div class="bg-[#0e0e10] px-5 py-5 font-mono text-xs leading-relaxed overflow-x-auto">
+      <pre id="terminal-output" class="whitespace-pre text-[#c8c4be]"></pre>
+    </div>
+  </div>
+
+  <!-- Pipeline source code (collapsible) -->
+  <details class="border-t border-hairline group">
+    <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-surface/30 transition-colors list-none">
+      <span class="font-mono text-[11px] text-text-faint uppercase tracking-wider">View Pipeline Source</span>
+      <span class="font-mono text-[10px] text-text-faint flex items-center gap-2">
+        <span class="text-indigo">dna_analysis.nf</span>
+        <span class="group-open:rotate-180 transition-transform inline-block">&#9660;</span>
+      </span>
+    </summary>
+    <div class="border-t border-hairline">
+      <div class="bg-[#0e0e10] overflow-x-auto">
+        <pre class="font-mono text-[11px] leading-relaxed text-[#c8c4be] px-5 py-4 whitespace-pre"><code id="nf-source"></code></pre>
+      </div>
+      <div class="px-5 py-3 border-t border-hairline bg-elevated flex items-center justify-between">
+        <span class="font-mono text-[10px] text-text-faint">Nextflow DSL2 &middot; requires Python 3.8+</span>
+        <a
+          href="/dna_analysis.nf"
+          download
+          class="font-mono text-[11px] text-indigo hover:text-indigo/80 transition-colors"
+        >
+          Download .nf &#8599;
+        </a>
+      </div>
+    </div>
+  </details>
+
+</div>
+
+<script define:vars={{ API_URL, NF_SCRIPT }}>
+  // ── DOM refs ───────────────────────────────────────────────
+  const input   = document.getElementById('seq-input');
+  const counter = document.getElementById('char-counter');
+  const runBtn  = document.getElementById('run-btn');
+  const runIcon = document.getElementById('run-icon');
+  const runLbl  = document.getElementById('run-label');
+  const runErr  = document.getElementById('run-error');
+  const wrap    = document.getElementById('terminal-wrap');
+  const term    = document.getElementById('terminal-output');
+  const nfSrc   = document.getElementById('nf-source');
+
+  // Populate source viewer
+  if (nfSrc) nfSrc.textContent = NF_SCRIPT;
+
+  // ── Preset buttons ─────────────────────────────────────────
+  document.querySelectorAll('.preset-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      input.value = btn.dataset.seq;
+      updateCounter();
+      clearError();
+    });
+  });
+
+  // ── Character counter ──────────────────────────────────────
+  function updateCounter() {
+    const n = input.value.replace(/\s/g, '').length;
+    counter.textContent = `${n} / 500 bp`;
+    counter.className = `font-mono text-[10px] sm:ml-auto ${n > 500 ? 'text-terracotta' : 'text-text-faint'}`;
+  }
+  input.addEventListener('input', updateCounter);
+
+  // ── Terminal helpers ───────────────────────────────────────
+  const MOSS    = '#8ab87a';
+  const INDIGO  = '#8898d0';
+  const AMBER   = '#d0b070';
+  const FAINT   = '#6b6460';
+  const TERRA   = '#d88868';
+  const WHITE   = '#f2ede6';
+
+  function col(text, color) {
+    return `<span style="color:${color}">${text}</span>`;
+  }
+
+  let lineQueue = [];
+  let animating = false;
+
+  function queueLine(html, delay = 0) {
+    lineQueue.push({ html, delay });
+  }
+
+  async function flushQueue() {
+    animating = true;
+    for (const { html, delay } of lineQueue) {
+      if (delay) await sleep(delay);
+      term.innerHTML += html + '\n';
+      wrap.scrollTop = wrap.scrollHeight;
+    }
+    lineQueue = [];
+    animating = false;
+  }
+
+  function clearTerminal() {
+    term.innerHTML = '';
+    lineQueue = [];
+  }
+
+  function sleep(ms) {
+    return new Promise((r) => setTimeout(r, ms));
+  }
+
+  function clearError() {
+    runErr.textContent = '';
+    runErr.classList.add('hidden');
+  }
+
+  function showError(msg) {
+    runErr.textContent = msg;
+    runErr.classList.remove('hidden');
+  }
+
+  function setRunning(loading) {
+    runBtn.disabled = loading;
+    runIcon.textContent = loading ? '○' : '▶';
+    runLbl.textContent  = loading ? 'Running...' : 'Run Pipeline';
+  }
+
+  // ── Main run function ──────────────────────────────────────
+  runBtn.addEventListener('click', async () => {
+    clearError();
+    const raw = input.value.replace(/\s/g, '').toUpperCase();
+
+    // Client-side validation
+    if (!raw) { showError('Enter a DNA sequence first.'); return; }
+    if (raw.length < 10) { showError(`Too short (${raw.length} bp). Minimum is 10 bp.`); return; }
+    if (raw.length > 500) { showError(`Too long (${raw.length} bp). Maximum is 500 bp.`); return; }
+    if (/[^ATCGN]/.test(raw)) {
+      const bad = [...new Set(raw.split('').filter(c => !/[ATCGN]/.test(c)))].join(', ');
+      showError(`Invalid characters: ${bad}`);
+      return;
+    }
+
+    setRunning(true);
+    wrap.classList.remove('hidden');
+    clearTerminal();
+
+    // Fire API call immediately — runs in parallel with animation
+    const apiPromise = fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sequence: raw }),
+    }).then((r) => r.json()).catch(() => ({ error: 'Network error — could not reach api.andrewbonney.cloud.' }));
+
+    // Random Nextflow-style names
+    const names = ['dreamy_curie', 'drunk_hawking', 'jolly_turing', 'naughty_lovelace', 'silly_knuth'];
+    const runName = names[Math.floor(Math.random() * names.length)];
+    const revision = Math.random().toString(16).slice(2, 10);
+
+    // Animate: header
+    const shortSeq = raw.length > 24 ? raw.slice(0, 21) + '...' : raw;
+    queueLine(`${col('$', MOSS)} nextflow run dna_analysis.nf ${col('--sequence', FAINT)} ${col(shortSeq, AMBER)}`, 0);
+    queueLine('', 0);
+    queueLine(`${col('N E X T F L O W', WHITE)}  ${col('~', FAINT)}  version 24.10.2`, 180);
+    queueLine(`Launching ${col("'dna_analysis.nf'", MOSS)} [${col(runName, INDIGO)}] DSL2 - revision: ${col(revision, FAINT)}`, 80);
+    queueLine('', 60);
+    queueLine(`executor ${col('>', FAINT)} local (4)`, 400);
+
+    // Start animation
+    const animPromise = flushQueue();
+
+    // Animate: 4 processes (one per 650ms — gives API time to return)
+    const processes = [
+      ['validate', 'VALIDATE_SEQUENCE ', MOSS],
+      ['stats',    'COMPUTE_STATS     ', MOSS],
+      ['revcomp',  'REVERSE_COMPLEMENT', MOSS],
+      ['motif',    'MOTIF_SCAN        ', MOSS],
+    ];
+
+    // Wait for header animation, then stream processes
+    await animPromise;
+
+    // Now we need API result for hashes — race with a timeout
+    let apiData = null;
+    const timeoutPromise = sleep(5000).then(() => ({ error: 'Timeout' }));
+    apiData = await Promise.race([apiPromise, timeoutPromise]);
+
+    const hashes = apiData?.process_hashes ?? {};
+
+    for (const [key, name, color] of processes) {
+      const hash = hashes[key] ?? Math.random().toString(16).slice(2, 10);
+      term.innerHTML += `${col('[' + hash + ']', INDIGO)} process ${col('>', FAINT)} ${col(name, color)} ${col('[100%]', FAINT)} 1 of 1 ${col('✔', MOSS)}\n`;
+      wrap.scrollTop = wrap.scrollHeight;
+      await sleep(620);
+    }
+
+    // Results block
+    term.innerHTML += '\n';
+
+    if (apiData?.error) {
+      term.innerHTML += col(`ERROR ~ ${apiData.error}`, TERRA) + '\n';
+      setRunning(false);
+      return;
+    }
+
+    const s = apiData.stats;
+    const sep = col('─'.repeat(52), FAINT);
+    const ts  = apiData.timestamp ?? new Date().toUTCString().replace(' GMT', '');
+
+    const label = (l) => col(l.padEnd(16), FAINT);
+    const val   = (v) => col(String(v), WHITE);
+
+    const displaySeq = raw.length > 32 ? raw.slice(0, 29) + '...' : raw;
+    const displayRC  = s.reverse_complement.length > 32
+      ? s.reverse_complement.slice(0, 29) + '...'
+      : s.reverse_complement;
+
+    // Top k-mers formatted
+    const kmerStr = (s.top_kmers ?? []).slice(0, 3).map(([k, n]) => `${col(k, MOSS)} ×${n}`).join('  ') || col('—', FAINT);
+
+    // Restriction sites
+    let rsiteStr;
+    const rsites = s.restriction_sites ?? {};
+    const rsiteKeys = Object.keys(rsites);
+    if (rsiteKeys.length === 0) {
+      rsiteStr = col('none detected', FAINT);
+    } else {
+      rsiteStr = rsiteKeys.map((name) => `${col(name, AMBER)}@${rsites[name].join(',')}`).join('  ');
+    }
+
+    const gcSkewSign = s.gc_skew >= 0 ? '+' : '';
+
+    term.innerHTML += sep + '\n';
+    term.innerHTML += ` ${label('Sequence')} ${val(displaySeq + ' (' + s.length + ' bp)')}\n`;
+    term.innerHTML += ` ${label('GC Content')} ${val(s.gc_content + '%')}\n`;
+    term.innerHTML += ` ${label('AT Content')} ${val(s.at_content + '%')}\n`;
+    term.innerHTML += ` ${label('GC Skew')} ${val(gcSkewSign + s.gc_skew)}\n`;
+    term.innerHTML += ` ${label('Rev. Complement')} ${val(displayRC)}\n`;
+    term.innerHTML += ` ${label('Top 3-mers')} ${kmerStr}\n`;
+    term.innerHTML += ` ${label('Restriction')} ${rsiteStr}\n`;
+    term.innerHTML += sep + '\n';
+    term.innerHTML += '\n';
+    term.innerHTML += `Completed at: ${col(ts, FAINT)}\n`;
+    term.innerHTML += `Duration    : ${col((Math.random() * 2 + 1.2).toFixed(1) + 's', WHITE)}  ${col('|', FAINT)}  Succeeded : ${col('4', MOSS)}\n`;
+
+    wrap.scrollTop = wrap.scrollHeight;
+    setRunning(false);
+  });
+</script>
