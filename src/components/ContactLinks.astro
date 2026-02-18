@@ -18,7 +18,12 @@ const iconPaths: Record<string, string> = {
       </div>
     </div>
 
-    <div class="flex flex-wrap gap-6">
+    <!-- Invitation copy -->
+    <p class="text-text-muted text-lg max-w-2xl leading-relaxed mb-8">
+      Open to research collaborations, pipeline development work, and interesting problems at the intersection of biology and computation. Reach out via any of the channels below.
+    </p>
+
+    <div class="flex flex-wrap gap-6 mb-12">
       {socialLinks.map((link) => (
         <a
           href={link.href}
@@ -38,6 +43,20 @@ const iconPaths: Record<string, string> = {
           </span>
         </a>
       ))}
+    </div>
+
+    <!-- Affiliations -->
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider mr-1">Affiliations</span>
+      <span class="font-mono text-[10px] px-2 py-1 border border-indigo/30 text-indigo bg-indigo/10 rounded-sm">
+        ISCB Member
+      </span>
+      <span class="font-mono text-[10px] px-2 py-1 border border-indigo/30 text-indigo bg-indigo/10 rounded-sm">
+        SLU IDBI
+      </span>
+      <span class="font-mono text-[10px] px-2 py-1 border border-moss/30 text-moss bg-moss/10 rounded-sm">
+        WashU Spencer Lab
+      </span>
     </div>
   </div>
 </section>

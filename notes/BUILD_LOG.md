@@ -155,6 +155,29 @@
 ### Notes ✅
 - Created `notes/DOPAMINE_DESIGN.md` documenting root cause analysis and solutions
 
+## Session 4 — 2026-02-17 (Visual Appeal & Personalization)
+
+### New: Profile Headshot in Hero ✅
+- Copied `notes/andrew-headshot.png` → `public/andrew-headshot.png`
+- Restructured Hero.astro into a two-column layout (text left, photo right on desktop; stacked on mobile)
+- Photo styled with hairline-strong border, rounded-sm, and a moss/30 offset accent frame
+- `loading="eager"` + `fetchpriority="high"` for fast first paint
+
+### New: Colored Tech Tags ✅
+- Added `tagColors` map to ProjectCard.astro
+- Four categories: moss (languages/bio), amber (cloud/pipeline), indigo (containers/web/tooling), terracotta (AI/ML)
+- Tags with no mapping fall back to the existing faint hairline style
+- Applies to all project card footers
+
+### Update: Richer Contact Section ✅
+- Added invitation paragraph before link buttons
+- Added affiliations badge row below buttons: ISCB Member, SLU IDBI, WashU Spencer Lab
+
+## Build Stats (Session 4)
+- 11 pages generated
+- 0 errors, 0 warnings
+- Build time: 2.62s
+
 ## Build Stats (Session 3)
 - 11 pages generated
 - 0 errors, 0 warnings, 0 hints

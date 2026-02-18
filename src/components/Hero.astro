@@ -13,50 +13,72 @@
   <div class="absolute inset-0 bg-gradient-to-b from-base/60 via-base/80 to-base"></div>
 
   <div class="relative mx-auto max-w-5xl px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
-    <!-- Status line -->
-    <div class="font-mono text-xs text-text-faint mb-8 flex items-center gap-2">
-      <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss status-pulse"></span>
-      <span>andrewbonney.cloud</span>
-      <span class="text-hairline-strong">//</span>
-      <span>St. Louis, MO</span>
-    </div>
+    <div class="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
 
-    <!-- Name -->
-    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-      Andrew Bonney
-    </h1>
+      <!-- Left: text content -->
+      <div class="flex-1 min-w-0">
+        <!-- Status line -->
+        <div class="font-mono text-xs text-text-faint mb-8 flex items-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-moss status-pulse"></span>
+          <span>andrewbonney.cloud</span>
+          <span class="text-hairline-strong">//</span>
+          <span>St. Louis, MO</span>
+        </div>
 
-    <!-- Title -->
-    <p class="font-mono text-base sm:text-lg text-moss tracking-wide mb-3">
-      Bioinformatics Scientist | Multi-Omics &amp; AI Integration
-    </p>
+        <!-- Name -->
+        <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+          Andrew Bonney
+        </h1>
 
-    <!-- Affiliation -->
-    <p class="font-mono text-sm text-text-faint mb-6">
-      Washington University School of Medicine
-    </p>
+        <!-- Title -->
+        <p class="font-mono text-base sm:text-lg text-moss tracking-wide mb-3">
+          Bioinformatics Scientist | Multi-Omics &amp; AI Integration
+        </p>
 
-    <!-- Tagline -->
-    <p class="text-text-muted text-lg sm:text-xl max-w-2xl leading-relaxed mb-12">
-      Integrating multi-omic data and developing reproducible computational pipelines. From Nextflow and Docker to deep learning for epigenetic analysis — bridging industrial rigor with academic innovation.
-    </p>
+        <!-- Affiliation -->
+        <p class="font-mono text-sm text-text-faint mb-6">
+          Washington University School of Medicine
+        </p>
 
-    <!-- CTAs -->
-    <div class="flex flex-wrap gap-4">
-      <a
-        href="#projects"
-        class="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-hairline-strong rounded font-mono text-sm text-text hover:bg-surface hover:border-moss/40 transition-all"
-      >
-        View Projects
-        <span class="text-text-muted">&darr;</span>
-      </a>
-      <a
-        href="/lab"
-        class="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-hairline rounded font-mono text-sm text-text-muted hover:text-text hover:border-hairline-strong transition-all"
-      >
-        The Lab
-        <span class="text-xs text-amber">[beta]</span>
-      </a>
+        <!-- Tagline -->
+        <p class="text-text-muted text-lg sm:text-xl max-w-2xl leading-relaxed mb-12">
+          Integrating multi-omic data and developing reproducible computational pipelines. From Nextflow and Docker to deep learning for epigenetic analysis — bridging industrial rigor with academic innovation.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#projects"
+            class="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-hairline-strong rounded font-mono text-sm text-text hover:bg-surface hover:border-moss/40 transition-all"
+          >
+            View Projects
+            <span class="text-text-muted">&darr;</span>
+          </a>
+          <a
+            href="/lab"
+            class="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-hairline rounded font-mono text-sm text-text-muted hover:text-text hover:border-hairline-strong transition-all"
+          >
+            The Lab
+            <span class="text-xs text-amber">[beta]</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: headshot -->
+      <div class="lg:flex-shrink-0 order-first lg:order-last">
+        <div class="relative w-44 h-44 sm:w-52 sm:h-52 lg:w-64 lg:h-64">
+          <!-- Offset accent frame -->
+          <div class="absolute inset-0 translate-x-2 translate-y-2 border border-moss/30 rounded-sm"></div>
+          <img
+            src="/andrew-headshot.png"
+            alt="Andrew Bonney"
+            class="relative w-full h-full object-cover object-top rounded-sm border border-hairline-strong"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+
     </div>
   </div>
 

@@ -29,6 +29,44 @@ const hoverGlow: Record<string, string> = {
   'coming-soon': 'card-hover--indigo',
   'portfolio': 'card-hover--terracotta',
 };
+
+const tagColors: Record<string, string> = {
+  // Languages — moss
+  'Python': 'border-moss/30 text-moss bg-moss/10',
+  'R': 'border-moss/30 text-moss bg-moss/10',
+  'Bash': 'border-moss/30 text-moss bg-moss/10',
+  'Rust': 'border-moss/30 text-moss bg-moss/10',
+  'Go': 'border-moss/30 text-moss bg-moss/10',
+  'Bioinformatics': 'border-moss/30 text-moss bg-moss/10',
+  'Genomics': 'border-moss/30 text-moss bg-moss/10',
+  'nf-core': 'border-moss/30 text-moss bg-moss/10',
+  // Cloud / infra — amber
+  'AWS': 'border-amber/30 text-amber bg-amber/10',
+  'AWS Batch': 'border-amber/30 text-amber bg-amber/10',
+  'Nextflow': 'border-amber/30 text-amber bg-amber/10',
+  'DRAGEN': 'border-amber/30 text-amber bg-amber/10',
+  // Containers / web / tooling — indigo
+  'Docker': 'border-indigo/30 text-indigo bg-indigo/10',
+  'Singularity': 'border-indigo/30 text-indigo bg-indigo/10',
+  'TypeScript': 'border-indigo/30 text-indigo bg-indigo/10',
+  'FastAPI': 'border-indigo/30 text-indigo bg-indigo/10',
+  'DNS': 'border-indigo/30 text-indigo bg-indigo/10',
+  'Web Development': 'border-indigo/30 text-indigo bg-indigo/10',
+  'Web': 'border-indigo/30 text-indigo bg-indigo/10',
+  'Community': 'border-indigo/30 text-indigo bg-indigo/10',
+  'Monitoring': 'border-indigo/30 text-indigo bg-indigo/10',
+  'Analytics': 'border-indigo/30 text-indigo bg-indigo/10',
+  // AI / ML — terracotta
+  'PyTorch': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'TensorFlow': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'BERT': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'Transformers': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'NLP': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'Machine Learning': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'Computer Vision': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'Pose Estimation': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+  'DeepLabCut': 'border-terracotta/30 text-terracotta bg-terracotta/10',
+};
 ---
 
 <article class={`group relative border border-hairline rounded-sm bg-surface/50 hover:bg-surface card-hover ${hoverGlow[status]} animate-on-scroll`}>
@@ -59,7 +97,7 @@ const hoverGlow: Record<string, string> = {
   <!-- Card footer with tags -->
   <div class="px-5 pb-4 flex flex-wrap gap-2">
     {tags.map((tag) => (
-      <span class="font-mono text-[10px] text-text-faint px-1.5 py-0.5 border border-hairline rounded-sm">
+      <span class={`font-mono text-[10px] px-1.5 py-0.5 border rounded-sm ${tagColors[tag] ?? 'border-hairline text-text-faint'}`}>
         {tag}
       </span>
     ))}
