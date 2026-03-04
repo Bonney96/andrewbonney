@@ -1,0 +1,431 @@
+1. Above/below the fold
+“Above the fold” refers to content that is visible at the top of a website; the user doesn’t need to scroll to see it. “Below the fold” refers to content further down the page which the user would need to scroll in order to see. In UX, it’s important to put meaningful, important content above the fold (for example, a header). 
+
+2. A/B testing
+UX design is all about finding what works best for your users. A/B testing is a method used to test two different versions of a design to see which variation performs best. When running A/B tests, you only want to vary one element or aspect of the design—this allows you to pin-point exactly which feature influenced the result. 
+
+a/b testing
+
+3. Accessibility
+Accessibility considers whether or not—and to what extent—a product or service can be used by everybody. Designing for accessibility means factoring in the needs of people with disabilities, as well as the various ways in which a person might interact with your product (for example, using assistive technology). Here are some basic considerations to help you get started with accessible design.
+
+[GET CERTIFIED IN UX]
+
+Take our Professional Diploma in UX Design course
+4. Adobe XD
+Adobe XD is one of the most popular UX design tools. Part of the Adobe Creative Cloud suite, it’s a vector-based design tool used for creating wireframes, prototypes, animations and UI designs. We’ll explain all of these terms throughout our glossary. 
+
+5. Affinity map (or affinity diagram)
+An affinity map (or affinity diagram) is used by UX designers to organise their findings from qualitative user research. This entails data that can’t be counted or measured, and therefore requires thematic analysis. For example, if you interviewed five users, you might create an affinity map to cluster similar themes and topics together. You can learn more about affinity mapping/diagramming in this guide. 
+
+6. Affordances
+An affordance refers to all the actions that are possible with a specific object or element, depending on the user’s capabilities. For example, a cupboard has the potential to be opened but only if you can reach the handle. A car has the potential to be driven but only if you are able to open the car door, start the engine and so on. When designing digital products, the goal is to create elements whose affordances (i.e. possible actions) match the user’s expectations. For example, if you design a button, the user will likely expect to be able to click it. 
+
+7. Agile UX
+Agile UX is a practice that has evolved to integrate agile software development principles into the UX design process. Agile UX is all about designers and developers working collaboratively and iteratively to build and ship versions of a product in short cycles—improving and updating the product along the way. This contrasts the traditional approach of first preparing and researching at length before building anything. 
+
+8. Animation design
+
+Animation design is the process of creating animated (or moving) graphics. In digital design, motion and animation are used to provide feedback to the user after a certain action—for example, an animation which conveys “loading” after a user clicks on a button. This clearly tells the user that their action has been registered. You can learn more about the role of animation and motion in UX here.
+
+9. (UX) Audit
+
+A UX audit reviews an existing product (or an aspect of the product) to identify issues in the overall user experience. You can think of a UX audit as a user experience health check, providing you with useful data to inform future design decisions. UX audits are typically conducted for quality assurance purposes after the release of a new product or a major redesign, but companies may schedule them periodically just to keep a general pulse on the product. 
+
+10. Beta testing
+
+Beta testing is when you launch an unfinished product to a select group of users in order to see how it performs in the real world. This allows you to identify bugs, pain points and areas of improvement for your imperfect beta product before developing and releasing it fully. 
+
+11. Brainstorming
+
+A key aspect of working in UX is coming up with ideas for how to solve user problems. Brainstorming is a popular ideation technique used by UX designers. It’s usually done in a group and essentially involves coming up with ideas and sharing them without too much thought. You can also brainstorm alone and map your ideas out on paper. 
+
+12. Brand identity
+
+Brand identity captures and conveys the essence of what a company is all about. It’s built on company values and how you want people to feel when they interact with your product or service. The user experience of a product plays a hand in shaping and reinforcing the brand identity; so, as a UX designer, it’s important to factor it in. 
+
+13. Breadcrumb
+
+A breadcrumb is a navigation system which shows where a user is currently situated within a website. For example, if you’re browsing the ASOS clothing website, you might see a trail of links which shows where you are (and how you got there) as follows: Home > Men > Sportswear > Shoes
+
+14. Card sorting
+
+Card sorting is a UX research method which gives you insight into how users categorise information. In a card sorting session, participants are given notecards with different labels or topics written on them and asked to organise them in a way that feels logical. Card sorting helps you to design the information architecture (IA) of a website or app in line with user expectations. You’ll find an explanation of information architecture later on in our glossary. 
+
+card sorting
+
+15. Case study
+
+Case studies are a crucial part of your UX portfolio. They outline the process you followed when working on a design project, showcasing the problem you set out to solve, the users you were solving it for, the methodology you used to reach the solution and the final design outcome. Check out these real UX portfolio examples to see how case studies work in action. 
+
+16. Clickstream analysis
+
+UX designers use clickstream analysis to gain a deeper understanding of user behaviour. Clickstream analysis records a user’s trail of activity as they interact with an app or website—i.e. the sequence of clicks they make or the pages they visit. 
+
+17. Cognitive load
+
+Cognitive load is a crucial factor to consider when designing products, services and features. Put simply, cognitive load is the amount of mental effort required to complete a certain task. As a UX designer, you want to keep the user’s cognitive load to a minimum. This is all part of designing easy, enjoyable, efficient experiences. 
+
+18. Competitor analysis
+
+UX designers usually conduct competitor analysis during the research phase of a design project. With competitor analysis, you’re looking at competing products within your niche or market space to see what they do well, where their weaknesses lie, and to get a feel for what your end-users will expect from a similar product (i.e. the one you’re going to design). Competitor analysis helps you to make informed design decisions. 
+
+19. Consistency
+
+Consistency is a key principle in UX design. It dictates that a user-friendly design always provides a consistent experience—once the user is familiar with your product, they can use it with ease; they don’t need to learn new ways of completing tasks or solving problems at every turn. Essentially, consistency eliminates confusion! You can read about the different types of consistency to be mindful of here.
+
+20. Contextual enquiry
+
+Contextual enquiry is a user research method which involves observing and interviewing users while they interact with your product in their “natural” environment. So, rather than asking them questions about their experience of the product after they’ve used it, you watch them in action and ask questions directly at the source to fill in any gaps. 
+
+21. Customer experience (CX)
+
+Customer experience, or CX, encompasses the entire experience a customer has when they engage with a product, service or brand. UX and CX are two distinct areas but, as a UX designer, it’s important to be aware of the concept and understand how UX contributes to the overall CX. 
+
+22. Dark UX
+
+Dark UX is not a term you ever want to be associated with as a UX designer. It’s the practice of deliberately designing in a way that tricks the user or subtly pushes them towards an action they probably don’t want to take. A classic example of dark UX is making it confusing for users to cancel their subscription. You can read about common dark UX patterns (and more user-friendly alternatives) here.
+
+23. Decision matrix
+
+A decision matrix – sometimes referred to as a prioritisation matrix – is a framework used to evaluate and prioritise ideas based on a set of predetermined criteria. In UX, it can help you to weigh up different design options and make informed decisions that balance available time and resources against the needs of the user. 
+
+decision matrix
+
+24. Design debt
+
+Design debt (or UX debt) is the result of taking shortcuts in the design process in order to quickly reach a solution or produce a deliverable. This can lead to problems down the line and can ultimately result in a negative user experience. You might accumulate design debt if you skip user research or user testing, if you ignore style guidelines or neglect to keep adequate documentation. The Nielsen Norman Group has published a useful guide on how to identify, prioritise and resolve design debt here.
+
+25. Design deliverables
+
+Design deliverables are the tangible “things” or artefacts a UX designer produces throughout the design process. UX deliverables include things like personas, user journey maps, wireframes and prototypes. You’ll find a definition of all of these terms in the latter part of our UX glossary. Keep reading!
+
+26. Design patterns
+
+UX and UI design patterns are repeatable, reusable design components used to solve usability issues that users commonly experience. For example, the breadcrumb navigation system (number 13 in our UX glossary) is a design pattern used to show the user their pathway from the homepage to the page that they’re currently viewing. 
+
+27. Design sprint
+
+Invented by Jake Knapp, the design sprint is an increasingly popular practice which condenses and accelerates the product design process. The idea is to rapidly build and test a prototype in just five days, encouraging design teams to quickly move from problem to solution. Lego, N26, Uber and Google are just some of the major brands who advocate for the design sprint methodology. 
+
+28. Design system
+
+A design system is a universal source of truth for the design team—a collection of design assets, guidelines, constraints and best practices to adhere to when embarking on a new design project.  
+
+design system
+
+29. Design thinking
+
+Design thinking has become something of a buzzword in the industry, so it’s a term worth getting to grips with. The design thinking process comprises five phases: Empathise (with the user), Define (the problem), Ideate (potential solutions), Prototype, and Test. Design thinking is used to address particularly tricky UX problems. 
+
+30. Diary study
+
+A diary study is a UX research method used to gain insight into how users behave in real-world situations and everyday contexts. When conducting a diary study, you’ll ask participants to keep a diary of their activities, thoughts and feelings over a set period of time in relation to a specific problem or scenario. For example, if you were designing a grocery delivery app, you might ask participants to keep a diary about how they currently approach the task of ordering groceries online. 
+
+31. (UX) Documentation 
+
+UX documentation captures all the steps you follow throughout a given design project. It allows you to keep track of the project and create a source of truth for all stakeholders to refer back to. UX documentation can include anything from the design problem and the project timeline to a summary of user research findings, early concepts and sketches, and results from usability tests. You can learn more about UX documentation (and some of the most useful UX documentation tools) in this guide. 
+
+32. Empathy 
+
+Empathy is the ability to metaphorically put yourself in someone else’s shoes—and it’s the very foundation of good UX design. Empathy enables you to understand your user’s needs and pain-points, and to design solutions accordingly. 
+
+33. Empathy map
+
+An empathy map is a visualisation tool used by designers to depict and summarise what they know about a user (or group of users). It consists of four quadrants: “Says”, “Thinks”, “Does” and “Feels” which capture notes on what the user has said (for e.g. during an interview), what they think about a product or experience, the actions they take in a given context and how they feel during the process. As the name suggests, an empathy map helps you to build empathy for your end users. 
+
+empathy map
+
+34. End user
+
+It’s impossible to talk about UX (or work in the field) without referring to the “end user”. The end user is, quite simply, the person you’re designing for. It’s the person who will use your product or service and it’s the person whose pain-points you want to understand and solve. 
+
+35. Ethical design
+
+You can think of ethical design as the process of “designing for good.” Ultimately, it’s about designing with the user’s wellbeing in mind. For example, an ethically designed social media app might contain features that encourage users to develop a healthy relationship with the app—such as a “time spent scrolling” warning to remind users to take a break.
+
+Read our blog post on designer Sarah Fathallah’s approach to ethical design.
+
+36. Eye tracking
+
+Eye tracking is a method used to track users’ eye movements as they look at a website. For UX designers, this provides valuable insight into which areas and elements of the design attract the most attention.
+
+37. Fidelity
+
+Fidelity is used to describe the quality of wireframes and prototypes—in other words, how closely the wireframe or prototype resembles what the live product will look like. Low-fidelity wireframes are bare-bones outlines, whereas high-fidelity prototypes include visuals and interactive properties, closely mimicking the look, feel and behaviour of a live website or app. 
+
+38. Figma
+
+Figma is another popular UX design tool used for wireframing, building out design systems, collaborating, running workshops and more. It’s not a UX term per se, but it is fast becoming one of the most-used tools in the industry, so it’s worth knowing about. 
+
+39. Flat design
+
+Flat design is a design style or language which favours simple, 2D elements and bright colours. While skeuomorphic design is all about creating a 3D, life-like feel, flat design keeps things plain and simple. Flat design originally came about to aid responsive design (see number 73 in our UX glossary). 
+
+40. Focus group
+
+Another UX research method, focus groups bring together a handful of users to discuss issues and concerns about the features of a product. Focus groups are moderated by the researcher, but for the participants, they feel unstructured and free-flowing. This can give way to very candid insights, and allows you to gather a variety of perspectives. 
+
+41. Full-stack designer
+
+A full-stack designer is a designer who has the skills and know-how to take on all the “stacks” (or layers) of the product design and development process. While most designers will specialise in just one area, such as UX design or UI design, full-stack designers can take on UX design, UI design, interaction design and frontend development. 
+
+42. Gestalt principles
+
+The Gestalt principles come from the field of psychology, and they’re essentially a set of laws that describe how our minds organise and interpret visual data. The Gestalt principles can be used to inform design decisions and shape the user experience. For example, the law of proximity states that elements which are positioned close together appear to be more related than elements which are spaced further apart. If you were designing a website based on the law of proximity, you’d group related elements closer together. You can learn all about the Gestalt principles and their usage in UX here.
+
+gestalt principles
+
+43. Grid system
+
+When designing, say, a page on a website, designers can follow grid systems to help them organise the various elements on the page. A grid system is essentially a series of rows and columns which gives you visibly marked-out areas (similar to a map) in which to place different elements. This makes it easier to design consistently across different pages. 
+
+44. Heatmap
+
+A heatmap is a data visualisation which literally maps out in different colours how and where users have spent time on your website. Red areas of the heatmap indicate popular sections of the website, while blue areas are those which received less attention. Heatmaps are another tool used by UX designers to understand how users behave and to design accordingly. 
+
+45. Heuristics
+
+Another term from the field of psychology, a heuristic is a mental shortcut which enables people to solve problems and make decisions quickly, based on what they’ve learned from previous experiences. In UX, we use heuristic evaluation to assess the usability of a digital interface. 
+
+46. Hick’s law
+
+According to Hick’s law, the more options or choices a user has, the longer it will take them to make a decision or choose a course of action. In UX, the goal is to keep the number of options available to the user to a minimum, making it quicker and easier for them to navigate through the experience without feeling overwhelmed.
+
+Read our blog post on how you can declutter your designs by implementing Hick’s Law.
+
+47. How Might We (HMW)
+
+If you’re in the process of solving a UX problem and trying to come up with ideas, you might frame the problem as a “How might we?” question. For example, if your problem statement is something like “Users struggle to fill out the application form and often fill it out wrong”, you could turn this into the following HMW: “How might we improve the application form to make it easier for users to fill it out correctly?” How Might We questions are a great way to progress from problem to solution while keeping the user at the forefront. 
+
+48. Ideation
+
+Ideation is all about generating as many ideas and potential solutions as possible, without considering or judging their feasibility. In the ideation phase, the focus is on quantity of ideas rather than on quality. Some popular ideation techniques include brainstorming, bodystorming and the SCAMPER method. You can read about them all (and more) in this introduction to ideation techniques.
+
+49. Inclusive design
+
+The Nielsen Norman Group describes inclusive design as a set of methodologies “to create products that understand and enable people of all backgrounds and abilities. It may address accessibility, age, economic situation, geographic location, language, race and more.” Ultimately, inclusive design is about designing experiences which include and benefit everyone. 
+
+50. Information architecture
+
+In UX design, information architecture considers how the information and content is organised within and across a product. If you’re designing a website, you’ll consider the positioning of each piece of content the user encounters, thinking about where it sits on the page and where it’s located in terms of the overall structure of the website. Good information architecture is crucial to good UX.
+
+[UX DESIGN FUNDAMENTALS COURSE]
+
+Get the Best Start in UX Design
+51. Interaction design (IxD)
+
+Interaction design (or IxD) is a subset of UX. Very simply, interaction design considers the interaction between users and products (whereas UX considers the entire user experience, not just the moment of interaction). There are five dimensions of interaction design: words, visual representations, physical objects or space, time and behaviour. If you’d like to learn more, we can recommend this guide to interaction design (and how it compares to UX).
+
+52. Intuitive design
+
+“Intuitive” is a word that you’ll hear time and time again in the UX world. Intuitive design is what UX professionals strive for; it’s design that the user can instantly understand and use without needing any kind of tutorial or instruction. 
+
+53. InVision Studio
+
+InVision Studio is another powerful tool that all designers should be familiar with. It includes features and functions for drawing, wireframing, prototyping and animating—pretty much everything you need to bring your designs to life. It counts as one of the best UI design tools, but is equally loved and used by UX designers too. 
+
+54. Iterative design
+
+Iterative design is the practice of continuously improving, refining and updating your product. An iteration of a design is essentially a new, updated version and designing iteratively enables you to keep improving the user experience on a regular and ongoing basis (rather than launching one version and never updating it again, regardless of how it’s received by users). 
+
+55. Lean UX
+
+Lean UX goes hand-in-hand with agile UX (number 7 in our glossary). It’s a collaborative approach to the UX design process which focuses on getting feedback as early as possible in order to make quick design decisions. While traditional UX focuses more heavily on first setting out product requirements and then producing deliverables, lean UX seeks to deliver and improve the product in ongoing, iterative cycles. We covered iterative design earlier on in our glossary (number 54). 
+
+lean UX
+
+56. Material Design
+
+Material Design is a design language for Android which was developed by Google in 2014. It’s an adaptable system of guidelines, components, and tools which designers and developers can use to quickly and collaboratively build digital products. Check out the latest version of Material Design here.
+
+57. Mental model
+
+A mental model represents what we believe about how things work in the world around us. Mental models provide us with a collection of frameworks to help us solve problems and approach different situations. In UX, mental models relate to how our users expect a particular product or experience to work, based on their experience with similar products. It’s important to design with the user’s mental models in mind so as not to throw the user. 
+
+58. Microcopy
+
+As you navigate a website or app, you’ll encounter all kinds of messaging: the text on a button, error messages, the “Welcome” note as you log in… that’s all microcopy. Microcopy is the text which guides a user throughout a digital product. 
+
+59. Mockup
+
+A mockup is a visual representation of what a product will look like once it’s developed. While wireframes tend to capture the bare-bones layout and structure, a mockup fills in detail such as colour and typography. It’s important to note that, unlike interactive prototypes, mockups are static. 
+
+60. Modal 
+
+A modal, or modal window, is a box that pops up outside of the main screen when the user clicks something on the current screen. Modals are used to draw the user’s attention and to get them to focus on one specific thing. To close the modal, the user must complete a certain action or actively click to exit out of it. An example of a modal could be the window that pops up when you’re reading a blog, asking you to subscribe to their newsletter. 
+
+modal
+
+61. MVP (Minimum viable product)
+
+MVP stands for “minimum viable product.” It’s the most minimal version of a product you can launch which has enough functionality for people to use, but will need further development. Launching an MVP allows you to see how the initial product idea is received before investing too much time and money. 
+
+62. Navigation
+
+Navigation is all about how a user navigates, or moves through, your product. As a designer, it’s important to think carefully about navigation to ensure that users don’t get lost, confused and frustrated. Simplicity, consistency, good information architecture, labels and menus are all key to user-friendly navigation. 
+
+63. Onboarding
+
+Onboarding, or user onboarding, is the process of getting new users familiar with your product. Designing an effective, enjoyable onboarding experience is a crucial aspect of designing a good user experience overall—and it’s especially important as it only happens once. That means you only have one shot at making a good impression and turning new users into long-term customers. You can learn about best practices for user onboarding over on UXPlanet. 
+
+64. Pain-points
+
+Pain-points are any issues, problems, frustrations or hiccups a user encounters during a given experience or interaction. As a UX designer, it’s your job to conduct research in order to uncover user pain-points and to design experiences which seek to solve them. 
+
+65. Paradox of specificity
+
+The paradox of specificity states that when we design with a very specific user group in mind, we actually create products that appeal to a mass audience beyond that target group. You can learn more about the paradox of specificity with the example of the Rollaboard suitcase here.
+
+66. Persona
+
+A persona is a fictional character which represents the goals, needs and characteristics of your target user(s). UX designers create personas based on their user research and refer back to them throughout the design process to ensure they’re keeping the user in mind. 
+
+persona
+
+67. Portfolio
+
+A UX portfolio is a collection of your best design work. It demonstrates your skills and abilities as a UX designer, and shows employers and clients how you work. A UX portfolio is a staple for anyone looking to land a job in the field. You can learn more about what a UX portfolio is and what it should include in this guide.
+
+You can read more about creating a portfolio without any working experience here.
+
+68. Problem statement
+
+UX is all about solving user problems. A problem statement is, quite simply, a statement which summarises and defines the problem that needs to be solved. 
+
+69. Product roadmap
+
+A product roadmap maps out the vision and strategy for a particular product and sets goals and priorities for the development of the product. UX design is a key part of the product development process, so it’s important to be familiar with the product roadmap. 
+
+70. Prototype
+
+A prototype is a simulation or model of what the final product will (or could) look like. UX designers create prototypes to gather feedback and improve their designs before pushing them through to development. You can learn more about prototyping and some of the most popular prototyping tools in this guide.
+
+71. Qualitative user research
+
+User research is a crucial part of the UX process and it can be either qualitative or quantitative. Qualitative user research provides insight into your users’ thoughts, motivations and behaviours. It gathers qualitative data—data which cannot be measured or counted but is extremely valuable nonetheless. An example of a qualitative user research method is a user interview, where your data comprises what the user said during the interview. 
+
+72. Quantitative user research
+
+UX designers and researchers conduct quantitative research to gather objective, measurable data about their users. An example of quantitative user data could be the number of people who visit a website in a given time frame or what percentage of users drop out of the checkout process at the last stage. 
+
+73. Responsive design
+
+Responsive design ensures that your designs display accurately on different screen sizes. A website that’s been designed responsively will look great whether it’s viewed on a desktop computer, a tablet or a smartphone. 
+
+responsive design
+
+74. Sitemap
+
+A sitemap gives a bird’s-eye view of the overall structure of a website. Very simply put, it’s a diagram which shows how pages are prioritised, linked and labelled. 
+
+75. Sketch
+
+Sketch is an industry-standard, all-in-one digital design tool. It includes tools for collaborative design, prototyping and developer handoff. 
+
+76. Stakeholder interviews
+
+Stakeholders are the people within a company or organisation who are invested in the success of the product you’re designing, and who can offer insights and input to inform the design process. Just as UX designers conduct user research to find out what the end user needs from the product, they might also conduct stakeholder interviews in order to understand the business goals that the product (and the product design process) should serve.  
+
+77. Storyboard
+
+In UX, a storyboard is a visual depiction of a user’s experience with a product. It’s a bit like a comic strip, allowing the designer to envision all the steps in the user’s journey and to gain a deeper understanding of how the user will relate to and experience the product. 
+
+78. Style guide
+
+A style guide is a document created by UX designers to set out the standards, conventions and guidelines which should be followed throughout the design process. The goal of a style guide is to ensure consistency. This is especially useful when you have lots of different stakeholders involved in the product design and development process. 
+
+79. Surveys
+
+Surveys are another popular user research method. You can gather both qualitative and quantitative data through user surveys, depending on how you frame the questions. Surveys offer a relatively low-cost and not-too-time-consuming way to obtain large volumes of user data. 
+
+80. Task analysis
+
+UX designers use task analysis to study and understand how users perform a series of tasks in order to complete their goal. The output of a task analysis is simply a list of all the steps a user will go through to complete their task. Task analysis typically takes place early on in the design process. 
+
+task analysis
+
+81. Tree testing
+
+Tree testing is a UX research method that provides insight into how easily people can find information on your website or app and where they get lost. Tree testing is useful for evaluating how user-friendly your site structure is. 
+
+82. Typography
+
+Typography refers to how text is arranged and styled. It’s more of a UI design term than a UX one (you can read about the difference between UX and UI here), but it certainly plays a part in the overall user experience. Designers must choose typography that is easily legible and visually appealing for the user. 
+
+83. Usability
+
+When we talk about usability, we’re looking at how easy a product is to use. Ultimately, is it easy for the user to complete their desired tasks? Usability is absolutely critical to providing a good user experience!
+
+84. Usability testing
+
+Usability testing is the process of testing your designs or product on a sample of people who represent your target users. During a usability test, you’ll ask participants to complete certain tasks, observing them as they do so. This allows you to identify any usability issues which are hampering the user experience.
+
+You can read about finding suitable users for usability testing here. 
+
+85. User-centred design
+
+User-centred design (UCD) places the end user front and centre throughout the product design and development process. It’s based on a set of principles which prioritise the end user, such as involving users from the very beginning of the process (i.e. through user research), getting real user feedback along the way and designing iteratively to keep improving the user experience. 
+
+86. User flow
+
+A user flow is a chart or diagram which shows the path a user will take to complete a certain task. UX designers create user flows in order to understand how a user will move through the product and to design the product in a way that facilitates this movement. 
+
+user flow
+
+87. User interface (UI)
+
+A user interface (a UI) is the point of interaction between humans and computers. It contains all the features a user needs to interact with a digital product: input controls which enable a user to input information, navigational elements which allow the user to move from one point to the next, informational components which provide the user with valuable information and containers which group the content into meaningful sections. Designers are responsible for creating interfaces that are user-friendly and aesthetically pleasing. 
+
+88. User interface design 
+
+UI design is the process of designing user interfaces. A user interface is the point of interaction between humans and computers (see number 87 in our UX glossary). User interface design takes care of how digital products look, feel and behave for the end user. Good UI is part of creating a delightful user experience and UX and UI designers work closely together. You’ll find a complete explanation of user interface design here.
+
+89. UI elements
+
+UI elements are the building blocks used in the design of apps and websites. When you use a website or app, you encounter buttons, forms, menus, drop-down lists, image carousels and more. These are all examples of UI elements. 
+
+90. User interview
+
+A user interview is a common UX research method, and it pretty much does what it says on the tin: you ask your user (or representative user) questions in order to gain insight into their thoughts, expectations, goals and pain-points in relation to a particular problem, product or experience. User interviews are a type of qualitative research (refer to terms 71 and 72 in our UX glossary to learn about the difference between qualitative and quantitative user research).
+
+91. User journey map
+
+A user journey map is a visualisation which depicts all the touchpoints between a user and a product across a given time period. It also contains information about the channels a person uses to interact with the product. User journey maps are useful as they allow designers to visualise and understand how the user experiences a product. It’s important to note that user journey maps are different to user flows.
+
+user journey map
+
+92. User research
+
+The goal of UX design is to solve real user problems. The only way to do this is to start by understanding your target users and the problems they face. To uncover such insights, UX designers conduct user research. User/UX research takes place early on in the process (in fact, it’s usually the very first step a designer will go through) and is absolutely critical to your work as a designer. We’ve covered UX research in more detail (together with some of the best UX research tools) in this guide. 
+
+93. User stories
+
+A user story is a brief, simple statement which defines the purpose (or one of the purposes) of creating a product. Writing user stories allows you to consider and capture what the user wants to achieve when they interact with your product. User stories are based on the following structure: As a [type of user], I need/want to [action] in order to achieve [goal or outcome]. 
+
+94. User testing
+
+User testing is when you test your product, new feature or prototype on real users in order to gain feedback and inform future iterations of the product. It sounds similar to usability testing (number 84 in our glossary) but there’s a difference: User testing is often used to determine if there’s a need for your proposed solution among your user group, while usability testing specifically looks at how easy a design or product is to use. 
+
+95. UX design
+
+You’re probably already familiar with this one but we couldn’t have a UX glossary without defining UX itself. UX, or user experience, relates to how a user feels whenever they use or interact with a product or service. It captures how easy and enjoyable the product is to use overall. UX design is the process of creating these experiences, with a focus on solving a specific problem or pain-point for the user. 
+
+96. UX strategy
+
+UX strategy ties the day-to-day work of the design team to the overarching business goals. It defines a vision for the product or service—that is, what the product looks like in its final state and the value it brings. It sets out goals and milestones which should be achieved along the way in order to reach the ultimate vision, as well as measures for success. Finally, a UX strategy defines a plan of action for how these goals will be met. 
+
+97. UX writing
+UX writing is a fast-growing field within UX. It’s the process of planning and writing all the text found on a digital product interface, with the goal of guiding the user through the experience. UX writing includes the creation of microcopy; things like error messages, welcome text and menu labels (see number 58 in our glossary). It’s important to note that UX writing is not the same as copywriting, as we explain in this post. 
+
+98. Visual design
+Visual design considers the aesthetics of an app or website. In the context of UX, the goal of visual design is to use text, images, colour and typography to enhance and aid the overall user experience. There is heavy overlap between visual design and UI design but one distinction commonly made is that visual designers consider the overall visual brand and identity rather than focusing on individual designs. 
+
+99. Whiteboard challenge
+If you’re aiming to become a UX designer, or to switch jobs in the field, you must be familiar with the whiteboard challenge. The whiteboard challenge is a common part of the UX interview process, requiring candidates to solve a design challenge in real-time, in front of the interview panel. When completing a whiteboard challenge, you’ll be asked to sketch out your thought process on a whiteboard. 
+
+100. White space
+White space is the empty space around and between different elements in your design. White space helps to create elegant, clutter-free designs and to direct the user’s attention to certain components. Note that white space doesn’t have to be white; the name just refers to any blank space on the page. 
+
+101. Wireframe
+A wireframe depicts the bare-bones layout of a website or app, showing how each screen will be structured and where different elements will sit on the page. Wireframing is an important part of the UX process as it allows you to test and validate initial concepts before developing them into high-fidelity designs and, ultimately, live products. Wireframes eventually evolve into prototypes, which are more life-like representations of how the product will look and behave. Learn more in our guide to the best wireframing tools.

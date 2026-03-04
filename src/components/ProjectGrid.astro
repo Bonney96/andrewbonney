@@ -26,7 +26,7 @@ const research = allProjects.filter((p) => p.data.category === 'research');
         Active Deployments
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {deployments.map((project) => (
+        {deployments.map((project, i) => (
           <ProjectCard
             title={project.data.title}
             description={project.data.description}
@@ -35,6 +35,7 @@ const research = allProjects.filter((p) => p.data.category === 'research');
             slug={project.id}
             url={project.data.url}
             repo={project.data.repo}
+            featured={i === 0}
           />
         ))}
       </div>

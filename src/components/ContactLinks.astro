@@ -13,8 +13,11 @@ const schedulingLink = socialLinks.find((l) => l.icon === 'cal');
 const otherLinks = socialLinks.filter((l) => l.icon !== 'cal');
 ---
 
-<section id="contact" class="py-20 sm:py-28 bg-surface/30">
-  <div class="mx-auto max-w-5xl px-6">
+<section id="contact" class="relative py-20 sm:py-28 bg-surface/30 overflow-hidden">
+  <!-- Radial gradient depth -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(136,152,208,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+
+  <div class="relative mx-auto max-w-5xl px-6">
     <!-- Section header -->
     <div class="mb-12 flex items-end justify-between section-divider pb-4">
       <div>
@@ -22,6 +25,11 @@ const otherLinks = socialLinks.filter((l) => l.icon !== 'cal');
         <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Connect</h2>
       </div>
     </div>
+
+    <!-- Serif intro line -->
+    <p class="font-serif italic text-text-muted text-lg mb-6">
+      Open to collaboration, consulting, and full-time roles in computational biology and AI infrastructure.
+    </p>
 
     <!-- Invitation copy -->
     <p class="text-text-muted text-lg max-w-2xl leading-relaxed mb-8">
@@ -35,7 +43,7 @@ const otherLinks = socialLinks.filter((l) => l.icon !== 'cal');
           href={schedulingLink.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="group inline-flex items-center gap-3 px-6 py-4 border border-amber/40 rounded-sm bg-amber/10 hover:bg-amber/20 hover:border-amber/60 card-hover transition-all"
+          class="group inline-flex items-center gap-3 px-8 py-4 w-full sm:w-auto border border-amber/40 rounded-sm bg-amber/10 hover:bg-amber/20 hover:border-amber/60 card-hover transition-all"
         >
           <svg
             class="w-5 h-5 text-amber"

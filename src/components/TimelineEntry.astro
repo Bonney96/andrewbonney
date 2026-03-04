@@ -13,34 +13,28 @@ const typeColors = {
 } as const;
 ---
 
-<div class="relative pl-8 pb-12 last:pb-0 group animate-on-scroll">
+<div class="relative pl-8 pb-16 last:pb-0 group animate-on-scroll">
   <!-- Timeline line -->
   <div class="absolute left-[7px] top-3 bottom-0 w-px bg-hairline group-last:hidden"></div>
 
   <!-- Timeline dot -->
-  <div class={`absolute left-0 top-2 w-[15px] h-[15px] rounded-full border-2 ${typeColors[entry.type]}/20`}>
+  <div class={`absolute left-0 top-2 w-5 h-5 rounded-full border-2 ${typeColors[entry.type]}/40`}>
     <div class={`absolute inset-[3px] rounded-full ${typeColors[entry.type]}`}></div>
   </div>
 
   <!-- Content -->
-  <div>
-    <!-- Date, type, and location -->
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1.5">
-      <span class="font-serif text-sm text-text-muted">{entry.date}</span>
-      <span class="font-mono text-[10px] text-text-faint uppercase tracking-wider">
-        {entry.type}
-      </span>
-      <span class="font-mono text-[10px] text-text-faint">
-        {entry.location}
-      </span>
+  <div class="relative">
+    <!-- Organization — visual star -->
+    <h3 class="font-serif text-xl font-bold text-text mb-0.5">{entry.organization}</h3>
+
+    <!-- Role title + date row -->
+    <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-0.5 mb-3">
+      <p class="font-mono text-sm text-moss">{entry.title}</p>
+      <span class="font-mono text-xs text-text-faint sm:absolute sm:right-0 sm:top-0">{entry.date}</span>
     </div>
 
-    <!-- Title and org -->
-    <h3 class="font-serif text-lg font-semibold mb-0.5">{entry.title}</h3>
-    <p class="font-mono text-sm text-moss mb-3">{entry.organization}</p>
-
     <!-- Description -->
-    <p class="text-text-muted text-sm leading-relaxed max-w-xl">{entry.description}</p>
+    <p class="text-text-muted text-base leading-relaxed max-w-xl">{entry.description}</p>
 
     <!-- Tags -->
     {entry.tags && (
