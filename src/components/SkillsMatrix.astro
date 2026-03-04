@@ -37,6 +37,14 @@ const levelOpacity: Record<string, string> = {
       </span>
     </div>
 
+    <!-- Proficiency legend -->
+    <div class="flex items-center gap-5 font-mono text-[10px] text-text-faint mb-8">
+      <span class="uppercase tracking-wider mr-1">Proficiency:</span>
+      <span class="opacity-100">&#9632; Advanced</span>
+      <span class="opacity-60">&#9632; Proficient</span>
+      <span class="opacity-40">&#9632; Familiar</span>
+    </div>
+
     <!-- Spec sheet rows -->
     <div class="divide-y divide-hairline">
       {skillCategories.map((category) => (

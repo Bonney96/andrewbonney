@@ -2,6 +2,10 @@
 import { SITE, NAV_LINKS } from '../lib/constants';
 
 const currentPath = Astro.url.pathname;
+
+// Extract section ID from a nav href (e.g. "/#projects" → "projects", "/lab" → "lab")
+const getSectionId = (href: string) =>
+  href.includes('#') ? href.split('#')[1] : href.split('/').filter(Boolean).pop() ?? '';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-base/80 backdrop-blur-md border-b border-hairline">
@@ -15,9 +19,10 @@ const currentPath = Astro.url.pathname;
       {NAV_LINKS.map((link) => (
         <a
           href={link.href}
+          data-nav-link={getSectionId(link.href)}
           class:list={[
             'font-mono text-xs tracking-wider uppercase transition-colors',
-            currentPath === link.href || (link.href.startsWith('/#') && currentPath === '/')
+            currentPath === link.href
               ? 'text-text'
               : 'text-text-muted hover:text-text',
           ]}
@@ -60,6 +65,31 @@ const currentPath = Astro.url.pathname;
       const open = !menu.classList.contains('hidden');
       menu.classList.toggle('hidden');
       btn.textContent = open ? 'menu' : 'close';
+    });
+  }
+
+  // Active-section highlighting — updates nav as user scrolls
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  if (navLinks.length > 0) {
+    const setActive = (id) => {
+      navLinks.forEach((link) => {
+        const active = link.getAttribute('data-nav-link') === id;
+        link.style.color = active ? 'var(--color-moss)' : '';
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-35% 0px -55% 0px' }
+    );
+
+    ['projects', 'skills', 'timeline', 'lab', 'contact'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
     });
   }
 </script>
